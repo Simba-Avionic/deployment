@@ -1,0 +1,103 @@
+{
+    "name": "app1",
+    "service_id": 100,
+    "interface": {
+        "ip": "testowy.socket2",
+        "port": 0
+    },
+
+    "pub_methods": [ 
+        {
+            "method_id": 1,
+            "name": "getcos"
+        }
+    ],
+    "req_events":[
+        {
+            "event_id":88,
+            "service_id":102,
+            "name":"app3/pressure"
+        },
+        {
+            "event_id":90,
+            "service_id":102,
+            "name":"app3/temp"
+        }
+
+    ],
+    "pub_events":{
+        "app1/temp" : {
+            "event_id":1,
+            "subscribers":[
+                {
+                    "service_id":1,
+                    "interface": {
+                        "name": "app3",
+                        "ip": "192.168.1.3",
+                        "port": 1003
+                    }
+                    
+                },
+                {
+                    "service_id":2,
+                    "interface": {
+                        "name": "app2",
+                        "ip": "adresipc",
+                        "port":0
+                    }
+                    
+                }
+            ]
+        },
+        "app1/pressure": {
+            "event_id":11,
+            "subscribers":[
+                {
+                    "service_id":1,
+                    "interface": {
+                        "name": "app1",
+                        "ip": "192.168.1.6",
+                        "port": 1009
+                    }
+                    
+                },
+                {
+                    "service_id":10,
+                    "interface": {
+                        "name": "app5",
+                        "ip": "adresip1234c",
+                        "port":0
+                    }
+                    
+                }
+            ]
+        }
+
+    },
+    "db": {
+        "methods":{
+            "app2/getcos": {
+                "service_id": 101,
+                "method_id": 1,
+                "interface": {
+                    "name": "app2",
+                    "ip": "testowy.socket2",
+                    "port": 0
+                }
+            },
+            "app3/getcos": {
+                "service_id": 102,
+                "method_id": 1,
+                "interface":{
+                    "name": "app3",
+                    "ip": "192.168.1.3",
+                    "port": 1003
+                }
+            }
+        }
+    },
+    "conf": {
+        "someconf": "val",
+        "logLevel": "kDebug"
+    }
+}

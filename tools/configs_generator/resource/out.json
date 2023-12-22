@@ -1,0 +1,62 @@
+{
+    "name": "mainApp",
+    "service_id": 2,
+    "interface": {
+        "ip": "testowy.socket2",
+        "port": 0
+    },
+    "req_events": [
+        {
+            "name": "engineApp/pressure",
+            "service_id": 1,
+            "event_id": 1
+        },
+        {
+            "name": "engineApp/deltaPress",
+            "service_id": 1,
+            "event_id": 2
+        }
+    ],
+    "pub_events": {
+        "mainApp/status": {
+            "event_id": 4,
+            "subscribers": [
+                {
+                    "service_id": 1,
+                    "interface": {
+                        "name": "app1",
+                        "ip": "192.168.1.1",
+                        "port": 1000
+                    }
+                }
+            ]
+        }
+    },
+    "pub_methods": [
+        {
+            "method_id": 2,
+            "name": "callGSE"
+        }
+    ],
+    "db": {
+        "engineApp/startEngine": {
+            "service_id": 1,
+            "method_id": 1,
+            "interface": {
+                "ip": "192.168.1.1",
+                "port": 1000
+            }
+        },
+        "engineApp/startTank": {
+            "service_id": 1,
+            "method_id": 2,
+            "interface": {
+                "ip": "192.168.1.1",
+                "port": 1000
+            }
+        }
+    },
+    "conf": {
+        "lvl": "Debug"
+    }
+}
