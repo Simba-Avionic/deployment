@@ -1,6 +1,6 @@
 
 py_binary(
-    name = "generator",
-    srcs = ["generator.py"],
-    
+    name = "main",
+    srcs = ["main.py"],
+    deps = ["//deployment/tools/configs_generator/utils:libs"],
 )
