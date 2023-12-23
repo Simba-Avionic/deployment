@@ -35,28 +35,24 @@
             }
         },
         {
-            "name":"mainApp",
-            "service_id":2,
-            "interface":"app2",
+            "name":"ota",
+            "service_id":256,
+            "interface":"ota",
             "pub_methods":[
                 {
+                    "method_id":1,
+                    "name":"entertoupdatemode"
+                },
+                {
                     "method_id":2,
-                    "name":"callGSE"
+                    "name":"updatefile"
                 }
             ],
             "pub_events":[
-                {
-                    "event_id":4,
-                    "name":"status"
-                }
             ],
             "req_methods":[
-                "engineApp/startEngine",
-                "engineApp/startTank"
             ],
             "req_events":[
-                "engineApp/pressure",
-                "engineApp/deltaPress"
             ],
             "conf":{
                 "lvl":"Debug"
