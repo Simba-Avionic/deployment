@@ -17,7 +17,7 @@ class Sender:
 
     def sendData(self,ip:str,port:int):
         """ip adress to send data,port """
-        hdr=SomeIPHeader(0x0000,0x0000,0x00)
+        hdr=SomeIPHeader(0x0000,0x0000,0x00) # JESLI TRZEBA ZMIEN SERVICE_ID,METHOD_ID,MSG_TYPE
         for part in self._data:
             crc=self._crc_generator.crc16_ccitt_false(part)
             part=self.transmition_num.to_bytes(2,byteorder='big')+part+crc.to_bytes(2,byteorder='big')

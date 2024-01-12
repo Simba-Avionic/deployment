@@ -1,0 +1,70 @@
+{
+    "name": "engineApp",
+    "service_id": 1,
+    "interface": {
+        "ip": "192.168.1.1",
+        "ipc": "SIMBA.DIAG.0x0101",
+        "port": 1000
+    },
+    "req_events": [
+        {
+            "name": "mainApp/status",
+            "service_id": 2,
+            "event_id": 4
+        }
+    ],
+    "pub_events": {
+        "engineApp/pressure": {
+            "event_id": 1,
+            "subscribers": [
+                {
+                    "service_id": 2
+                }
+            ]
+        },
+        "engineApp/deltaPress": {
+            "event_id": 2,
+            "subscribers": [
+                {
+                    "service_id": 2
+                },
+                {
+                    "service_id": 3
+                }
+            ]
+        }
+    },
+    "req_methods": {
+        "mainApp/callGSE": {
+            "service_id": 2,
+            "method_id": 2
+        }
+    },
+    "pub_methods": [
+        {
+            "method_id": 1,
+            "name": "startEngine"
+        },
+        {
+            "method_id": 2,
+            "name": "startTank"
+        }
+    ],
+    "db": {
+        "2": {
+            "name": "app3",
+            "ip": "",
+            "ipc": "SIMBA.DIAG.0x0103",
+            "port": 0
+        },
+        "3": {
+            "name": "app2",
+            "ip": "192.168.11.22",
+            "ipc": "",
+            "port": 5055
+        }
+    },
+    "conf": {
+        "lvl": "Debug"
+    }
+}

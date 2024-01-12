@@ -38,21 +38,22 @@
             "name": "callGSE"
         }
     ],
-    "db": {
+    "req_methods": {
         "engineApp/startEngine": {
             "service_id": 1,
-            "method_id": 1,
-            "interface": {
-                "ip": "192.168.1.1",
-                "port": 1000
-            }
+            "method_id": 1
         },
         "engineApp/startTank": {
             "service_id": 1,
-            "method_id": 2,
-            "interface": {
-                "ip": "192.168.1.1",
-                "port": 1000
+            "method_id": 2
+        }
+    },
+    "db":{
+        "0x0001":{
+            "interface":{
+                "ip":"192.168.1.1",
+                "port":10101,
+                "ipc":"SIMBA.ENGINE.DIAG.0x0001"
             }
         }
     },
