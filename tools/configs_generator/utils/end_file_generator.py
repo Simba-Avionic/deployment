@@ -18,6 +18,7 @@ class EndFileGenerator:
         interface=self.interface.get_by_interface_name(interface_name)
         out={
             "ip":interface["ip"],
+            "ipc":interface["ipc"],
             "port":interface["port"]
         }
         logging.info(f"_generate_interface {out}")
@@ -49,32 +50,24 @@ class EndFileGenerator:
                 sub_services.append(self.service.get_by_name(s))
             out[string_name]={
                 "event_id":event.get("event_id"),
-                "subscribers":[{"service_id":service.get("service_id"),"interface":self.interface.get_by_interface_name(service.get("interface"))} for service in sub_services]
+                "subscribers":[{"service_id":service.get("service_id")} for service in sub_services]
             }
         return out
 
 
-    def _generate_db(self,req_services:list)-> dict | None:
+    def _generate_req_methods(self,req_services:list)-> dict | None:
         db={}
         for endpoint in req_services:
             remote_service_name=endpoint.split("/")[0]
             remote_method_name=endpoint.split("/")[1]
             
             remote_service_id=self.service.get_by_name(remote_service_name).get("service_id","")
-            remote_service_interface_name=self.service.get_by_name(remote_service_name).get("interface","")
 
-            remote_service_interface=self.interface.get_by_interface_name(remote_service_interface_name)
             remote_method_id=self.service.get_method_id_by_name(remote_method_name)
-            
-            final_interface={
-                "ip":remote_service_interface["ip"],
-                "port":remote_service_interface["port"]
-            }
 
             db[endpoint]={
                 "service_id":remote_service_id,
                 "method_id":remote_method_id,
-                "interface":final_interface
             }
             logging.info(db)
         return db
@@ -90,6 +83,21 @@ class EndFileGenerator:
     def save_to_file(self,path):
         with open(f"{path}/out.json","w") as file:
             json.dump(self.generate_output_json(),file,indent=4)
+
+    def _generate_db(self):
+        db={}
+        my_interface_name=self.interface.get_by_interface_name(self.service.get_interface_name_by_service_name(self.service_name))["name"]
+        for s in self.service.data:
+            if s["name"]!=self.service_name:
+                in_name=self.service.get_interface_name_by_service_name(s["name"])
+                remote_service_interface=self.interface.get_by_interface_name(in_name)
+                if self.router.interfaces_in_the_same_router(my_interface_name,in_name):
+                    remote_service_interface["port"]=0
+                    remote_service_interface["ip"]=""
+                else:
+                    remote_service_interface["ipc"]=""
+                db[str(s["service_id"])]=remote_service_interface
+        return db
 
 
     def generate_output_json(self):
@@ -109,10 +117,13 @@ class EndFileGenerator:
         out_dict["req_events"]=self._generate_req_events(work_service.get("req_events",[]))
 
         out_dict["pub_events"]=self._generate_pub_events(self.service.get_by_name(self.service_name).get("pub_events",[]))
-        out_dict["pub_methods"]=self.service.get_by_id(out_dict["service_id"]).get("pub_methods",[])
 
         req_services = work_service.get("req_methods", [])
-        out_dict["db"] = self._generate_db(req_services)
+        out_dict["req_methods"] = self._generate_req_methods(req_services)
+
+        out_dict["pub_methods"]=self.service.get_by_id(out_dict["service_id"]).get("pub_methods",[])
+
+        out_dict["db"]=self._generate_db()
 
         out_dict["conf"] = work_service.get("conf",{})
 

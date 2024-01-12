@@ -37,7 +37,7 @@
         {
             "name":"mainApp",
             "service_id":2,
-            "interface":"app2",
+            "interface":"app3",
             "pub_methods":[
                 {
                     "method_id":2,
@@ -56,6 +56,34 @@
             ],
             "req_events":[
                 "engineApp/pressure",
+                "engineApp/deltaPress"
+            ],
+            "conf":{
+                "lvl":"Debug"
+            }
+        },
+        {
+            "name":"desktopApp",
+            "service_id":3,
+            "interface":"app2",
+            "pub_methods":[
+                {
+                    "method_id":10,
+                    "name":"hwdp"
+                }
+            ],
+            "pub_events":[
+                {
+                    "event_id":15,
+                    "name":"status"
+                }
+            ],
+            "req_methods":[
+                "engineApp/startEngine",
+                "engineApp/startTank"
+            ],
+            "req_events":[
+                "mainApp/status",
                 "engineApp/deltaPress"
             ],
             "conf":{
