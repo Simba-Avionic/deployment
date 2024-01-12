@@ -1,32 +1,29 @@
 {
-    "name": "engineApp",
-    "service_id": 1,
+    "name": "mainApp",
+    "service_id": 2,
     "interface": {
-        "ip": "192.168.1.1",
-        "ipc": "SIMBA.DIAG.0x0101",
-        "port": 1000
+        "ip": "192.168.1.3",
+        "ipc": "SIMBA.DIAG.0x0103",
+        "port": 1003
     },
     "req_events": [
         {
-            "name": "mainApp/status",
-            "service_id": 2,
-            "event_id": 4
+            "name": "engineApp/pressure",
+            "service_id": 1,
+            "event_id": 1
+        },
+        {
+            "name": "engineApp/deltaPress",
+            "service_id": 1,
+            "event_id": 2
         }
     ],
     "pub_events": {
-        "engineApp/pressure": {
-            "event_id": 1,
+        "mainApp/status": {
+            "event_id": 4,
             "subscribers": [
                 {
-                    "service_id": 2
-                }
-            ]
-        },
-        "engineApp/deltaPress": {
-            "event_id": 2,
-            "subscribers": [
-                {
-                    "service_id": 2
+                    "service_id": 1
                 },
                 {
                     "service_id": 3
@@ -35,26 +32,26 @@
         }
     },
     "req_methods": {
-        "mainApp/callGSE": {
-            "service_id": 2,
+        "engineApp/startEngine": {
+            "service_id": 1,
+            "method_id": 1
+        },
+        "engineApp/startTank": {
+            "service_id": 1,
             "method_id": 2
         }
     },
     "pub_methods": [
         {
-            "method_id": 1,
-            "name": "startEngine"
-        },
-        {
             "method_id": 2,
-            "name": "startTank"
+            "name": "callGSE"
         }
     ],
     "db": {
-        "2": {
-            "name": "app3",
+        "1": {
+            "name": "app1",
             "ip": "",
-            "ipc": "SIMBA.DIAG.0x0103",
+            "ipc": "SIMBA.DIAG.0x0101",
             "port": 0
         },
         "3": {
