@@ -32,3 +32,11 @@ class Router(BaseClass):
             if interface_name in r["interfaces"]:
                 return r
         return None
+    
+    def interfaces_in_the_same_router(self,interface_name1:str,interface_name2:str)->bool:
+        for r in self.data:
+            if interface_name1 in r["interfaces"] and interface_name2 in r["interfaces"]:
+                return True
+        return False
+
+
