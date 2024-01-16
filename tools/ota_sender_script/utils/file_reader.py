@@ -1,17 +1,15 @@
-
-
 class FileReader:
     """Class to read data from file"""
     def read_data_in_parts(self,filename):
         """ odczytuje dane w porcjach po 251 Bajtów"""
         try:
             file_parts = []
-            with open(filename, 'rb') as plik:
-                while True:
-                    part = plik.read(253)
-                    if not part:
-                        break
-                    file_parts.append(part)
+            with open(filename, 'rb') as file:
+                byte=file.read(251)
+                while byte!=b"":
+                    file_parts.append(byte)
+                    byte=file.read(251)
+
             return file_parts
         except FileNotFoundError:
             return "Plik nie znaleziony"

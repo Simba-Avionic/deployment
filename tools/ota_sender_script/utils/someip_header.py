@@ -1,4 +1,5 @@
 import ctypes
+from utils.crc_generator import CrcGenerator
 
 class SomeIPHeader:
     def __init__(self, service_id,methode_id,msg_typ=0x01) -> None:
@@ -46,18 +47,21 @@ class SomeIPHeader:
 
         return res
 
-    def GetSomeIPDataPayload(self, payload):
-        res = []
-        self.length = 0x8+len(payload)
-        res.append(self.service_id.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big"))
-        res.append(self.methode_id.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big"))
-        res.append(self.length.to_bytes(ctypes.sizeof(ctypes.c_uint32), byteorder="big"))
-        res.append(self.client_id.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big"))
-        res.append(self.session.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big"))
-        res.append(0x01.to_bytes(ctypes.sizeof(ctypes.c_uint8), byteorder="big"))
-        res.append(0x01.to_bytes(ctypes.sizeof(ctypes.c_uint8), byteorder="big"))
-        res.append(self.msg_typ.to_bytes(ctypes.sizeof(ctypes.c_uint8), byteorder="big"))
-        res.append(self.msg_return.to_bytes(ctypes.sizeof(ctypes.c_uint8), byteorder="big"))
-        res.append(payload)
-
-        return  res
+    def GetSomeIPDataPayload(self, payload,addCrc:bool=True):
+        res = bytearray()
+        crcGenerator=CrcGenerator()
+        self.length=0x010+len(payload)
+        crc = crcGenerator.crc16_ccitt_false(payload)
+        res += self.service_id.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big")
+        res += self.methode_id.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big")
+        res += self.length.to_bytes(ctypes.sizeof(ctypes.c_uint32), byteorder="big")
+        res += self.client_id.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big")
+        res += self.session.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big")
+        res += (0x01).to_bytes(ctypes.sizeof(ctypes.c_uint8), byteorder="big")
+        res += (0x01).to_bytes(ctypes.sizeof(ctypes.c_uint8), byteorder="big")
+        res += self.msg_typ.to_bytes(ctypes.sizeof(ctypes.c_uint8), byteorder="big")
+        res += self.msg_return.to_bytes(ctypes.sizeof(ctypes.c_uint8), byteorder="big")
+        res += payload
+        if addCrc:
+            res += crc.to_bytes(ctypes.sizeof(ctypes.c_uint16), byteorder="big")
+        return res
