@@ -1,7 +1,6 @@
 {
     "app_id": "DLTS",
     "app_des": "DLT server",
-    "log_level": "kInfo",
-    "log_mode": "kConsole|kFile",
-    "log_file": "/etc/simba/dlt-server-log.txt"
+    "log_level": "kDebug",
+    "log_mode": "kConsole|kFile"
 }

@@ -5,7 +5,7 @@ load("//deployment/bazel:cpu_def.bzl", "cpu_def")
 cpu_def(
     name = "pkg",
     srp_components = [
-        "//deployment/mw/loger/dlt_fc:dlt_server",
+        # "//deployment/mw/loger/dlt_fc:dlt_server",`
         "//deployment/apps/example",
     ],
     cpu_name = "ec",
