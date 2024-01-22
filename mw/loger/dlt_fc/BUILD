@@ -1,8 +1,8 @@
 load("//deployment/bazel:srp_component.bzl", "srp_component")
 
 srp_component(
-    name = "example",
-    bin = "//apps/example",
+    name = "dlt_server",
+    bin = "//mw/loger/dlt:dlt_server",
     configs = [
         "config.json",
         "logger.json",
