@@ -9,14 +9,16 @@ def _component_system_d(ctx):
 Description=Simba srp app: """ + ctx.attr.component_name + """
 StartLimitIntervalSec=2
 StartLimitBurst=2
+After=srp_start.service
 
 [Service]
-ExecStart=/out/""" + ctx.attr.component_name + "/bin/" + ctx.attr.component_name + """
+ExecStart=/opt/""" + ctx.attr.component_name + "/bin/" + ctx.attr.component_name + """
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=""" + ctx.attr.component_name + """
 Restart=on-failure
 RestartSec=5
+Type=notify
 
 [Install]
 WantedBy=multi-user.target
@@ -62,12 +64,12 @@ rename = rule(
 )
 
 
-def srp_component(name, bin, configs = [], visibility = []):
+def srp_component(name, bin, prio = 0, wait_time = 0 ,configs = [], visibility = []):
     pkg_tar(
         name = "config_files",
         package_dir = "opt/" + name + "/etc",
         srcs = configs,
-        mode = "0755",
+        mode = "0777",
         visibility = ["//visibility:private"],
     )
 
@@ -77,7 +79,7 @@ def srp_component(name, bin, configs = [], visibility = []):
         srcs = [
             ":out_bin"
         ],
-        mode = "0755",
+        mode = "0777",
         visibility = ["//visibility:private"],
     )
 
@@ -89,24 +91,11 @@ def srp_component(name, bin, configs = [], visibility = []):
     )
 
     pkg_tar(
-        name = "system_d_pkg",
-        package_dir = "opt/" + name + "/systemd",
-        srcs = [":system_d.config"],
-        mode = "0755",
-        visibility = ["//visibility:private"],
-    )
-    component_system_d(
-        name = "system_d.config",
-        component_name = name,
-    )
-
-    pkg_tar(
         name = name,
         deps = [
             ":config_files",
             ":bin-pkg",
-            ":system_d_pkg",
         ],
-        mode = "0755",
+        mode = "0777",
         visibility = visibility,
     )

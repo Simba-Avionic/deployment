@@ -16,17 +16,19 @@ ifconfig """ + ctx.attr.interface_name + """ """ + ctx.attr.ip + """ netmask """
 echo "Interface set [DONE]"
     """
     return content
+
 def convert(path):
-    res = path.split("/")[-1].replace(".tar","")
+    res = path.split("/")[-1].replace(".tar", "")
     return res
+
 def _start_service_script(ctx):
     t = ""
-    ll= ""
+    ll = ""
     for ob in ctx.files.components:
         item = convert(ob.path)
         t = t + """
 echo "Starting """ + item + """"
-systemctl start /opt/""" + item + """/systemd/""" + item + """.service
+/opt/""" + item + """/bin/""" + item + """ 2>&1 &
 echo " """ + item + """ Started "
         """
     content = """ 
@@ -54,8 +56,8 @@ def _startup_script(ctx):
 #
 echo "Simab SRP start up script"
 
-sh /opt/cpu_simba/network_interface.sh
-sh /opt/cpu_simba/component_start_up.sh
+/opt/cpu_simba/network_interface.sh
+/opt/cpu_simba/component_start_up.sh
 
 echo "Simab SRP start up script [DONE]"
 
@@ -99,12 +101,12 @@ def cpu_def(name, cpu_name, srp_components, interface_name, ip, mask):
         name = "config_pkg",
         package_dir = "opt/cpu_simba",
         srcs = [":cpu"],
-        mode = "0755",
+        mode = "0777",
         visibility = ["//visibility:private"],
     )
     pkg_tar(
         name = name,
         deps = [":config_pkg"] + srp_components,
-        mode = "0755",
-        visibility = ["//visibility:private"],
+        mode = "0777",
+        visibility = ["//visibility:public"],
     )
