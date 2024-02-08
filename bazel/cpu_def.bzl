@@ -40,7 +40,7 @@ echo " """ + item + """ Started "
 ################################################################################
 #
 echo "Starting components at""" + ctx.attr.cpu_name + """ "
-""" + t + """
+/opt/em/bin/em
 echo "Simab SRP start up component script [DONE]"
 """
     return content
@@ -57,6 +57,7 @@ def _startup_script(ctx):
 echo "Simab SRP start up script"
 
 /opt/cpu_simba/network_interface.sh
+sleep 5
 /opt/cpu_simba/component_start_up.sh
 
 echo "Simab SRP start up script [DONE]"
@@ -71,9 +72,6 @@ def _start_service_list_impl(ctx):
     ctx.actions.write(output = out1, content = _startup_script(ctx))
     ctx.actions.write(output = out2, content = _start_service_script(ctx))
     ctx.actions.write(output = out3, content = _netinterface_script(ctx))
-    _startup_script(ctx)
-    _start_service_script(ctx)
-    _netinterface_script(ctx)
 
     return [DefaultInfo(files = depset([out1, out2, out3]))]
 

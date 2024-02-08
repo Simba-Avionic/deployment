@@ -7,6 +7,7 @@ cpu_def(
     srp_components = [
         # "//deployment/mw/loger/dlt_fc:dlt_server",`
         "//deployment/apps/example",
+        "//deployment/mw/em",
     ],
     cpu_name = "ec",
     interface_name = "eth0",
