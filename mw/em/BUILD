@@ -1,13 +1,11 @@
 load("//deployment/bazel:srp_component.bzl", "srp_component")
 
 srp_component(
-    name = "dlt_server",
-    bin = "//mw/logger/code:dlt_server",
+    name = "em",
+    bin = "//mw/em/code:em",
     configs = [
         "config.json",
         "logger.json",
     ],
-    startup_prio = "10",
     visibility = ["//deployment/cpu:__subpackages__"],
 )
-
