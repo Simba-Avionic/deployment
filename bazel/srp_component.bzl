@@ -1,11 +1,16 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 
 def _component_system_d(ctx):
+    l = ""
+    if (ctx.attr.diag_enable):
+        l = l + """
+    "diag_id":""" + "{}".format(int(ctx.attr.app_id,16)) + ""","""
     out = ctx.actions.declare_file("srp_app.json")
     ctx.actions.write(
         output = out,
         content = """
 {
+    """ + l + """
     "bin_path":"/opt/""" + ctx.attr.app_name + """/bin/""" + ctx.attr.app_name + """\",
     "parms":\"""" + ctx.attr.parms + """\",
     "startup_prio":""" + ctx.attr.startup_prio + """,
@@ -21,6 +26,8 @@ component_app = rule(
         "app_name": attr.string(),
         "parms": attr.string(),
         "startup_prio": attr.string(),
+        "app_id": attr.string(),
+        "diag_enable": attr.bool(),
         "startup_after_delay": attr.string(),
     },
 )
@@ -53,12 +60,14 @@ rename = rule(
     },
 )
 
-def srp_component(name, bin, prio = 0, wait_time = 0, configs = [], start_parms = "", startup_prio = "0", startup_after_delay = "0", visibility = []):
+def srp_component(name, bin, app_id = "0", diag_enable = False, configs = [], start_parms = "", startup_prio = "0", startup_after_delay = "0", visibility = []):
     component_app(
         name = "srp_config",
         app_name = name,
         parms = start_parms,
         startup_prio = startup_prio,
+        app_id = app_id,
+        diag_enable = diag_enable,
         startup_after_delay = startup_after_delay,
     )
 
