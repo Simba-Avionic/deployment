@@ -57,7 +57,6 @@ def _startup_script(ctx):
 echo "Simab SRP start up script"
 
 /opt/cpu_simba/network_interface.sh
-sleep 5
 /opt/cpu_simba/component_start_up.sh
 
 echo "Simab SRP start up script [DONE]"
