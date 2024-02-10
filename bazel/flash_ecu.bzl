@@ -47,3 +47,4 @@ flash_bbb_ecu = rule(
         "bazel_configuration": attr.string(default = "bbb")
     },
 )
+
