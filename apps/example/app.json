@@ -1,0 +1,37 @@
+{
+    "app": {
+        "name":"ExampleApp",
+        "bootMode":0,
+        "logger":{
+            "app_id": "EXAM",
+            "app_des": "Przykladowa Aplikacja",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip":{
+            "service_id":15,
+            "mode":"kUDP|kIPC",
+            "port":1011,
+            "platform": "engine_computer",
+            "methods":[
+                {
+                    "name":"exampleMethod",
+                    "id":10
+                },
+                {
+                    "name":"exampleMethod2",
+                    "id":11
+                }
+            ],
+            "events":[
+                {
+                    "name":"exampleEvent",
+                    "id":32769
+                }
+            ],
+            "req_events": [
+                "EmServer/exampleEvent"
+            ]
+        }
+    }
+}

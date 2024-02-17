@@ -1,0 +1,30 @@
+{
+    "app": {
+        "name":"ExampleApp",
+        "bootMode":0,
+        "logger":{
+            "app_id":"EXAM",
+            "app_des":"Przykladowa Aplikacja",
+            "log_level":"kInfo",
+            "log_mode":"kConsole|kDLT"
+        },
+        "someip":{
+            "service_id":10,
+            "mode":"kIPC|kUDP",
+            "port":1011,
+            "platform": "fc_cpu",
+            "methods":[
+                {
+                    "name":"exampleMethod",
+                    "id":10
+                }
+            ],
+            "events":[
+                {
+                    "name":"exampleEvent",
+                    "id":32769
+                }
+            ]
+        }
+    }
+}

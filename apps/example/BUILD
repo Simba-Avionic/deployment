@@ -10,3 +10,8 @@ srp_component(
     visibility = ["//deployment/cpu:__subpackages__"],
 )
 
+filegroup(
+    name = "app_config",
+    srcs = ["app.json","app2.json"],
+    visibility = ["//deployment/apps:__subpackages__"],
+)
