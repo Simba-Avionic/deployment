@@ -1,6 +1,0 @@
-{
-    "app_id": "EM--",
-    "app_des": "EM server",
-    "log_level": "kDebug",
-    "log_mode": "kConsole|kDLT"
-}

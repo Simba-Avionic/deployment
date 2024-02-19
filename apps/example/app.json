@@ -20,7 +20,7 @@
                 },
                 {
                     "name":"exampleMethod2",
-                    "id":11
+                    "id":100
                 }
             ],
             "events":[
@@ -29,8 +29,7 @@
                     "id":32769
                 }
             ],
-            "req_events": [
-                "EmServer/exampleEvent"
+            "req_methods": [
             ]
         }
     }

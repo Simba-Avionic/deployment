@@ -1,40 +1,13 @@
 {
     "app": {
-        "name":"EmServer",
-        "bootMode":0,
-        "logger":{
+        "name": "EmServer",
+        "bootMode": 10,
+        "diag_address": 258,
+        "logger": {
             "app_id": "EM--",
             "app_des": "EM server",
             "log_level": "kDebug",
             "log_mode": "kConsole|kDLT"
-        },
-        "someip":{
-            "service_id":10,
-            "mode":"kUDP|kIPC",
-            "port":1011,
-            "platform": "engine_computer",
-            "methods":[
-                {
-                    "name":"exampleMethod",
-                    "id":10
-                },
-                {
-                    "name":"exampleMethod2",
-                    "id":11
-                }
-            ],
-            "events":[
-                {
-                    "name":"exampleEvent",
-                    "id":32769
-                }
-            ],
-            "req_methods": [
-                "ExampleApp/exampleMethod2"
-            ],
-            "req_events": [
-                "ExampleApp/exampleEvent"
-            ]
         }
     }
 }

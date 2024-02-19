@@ -55,7 +55,35 @@ bs_someip_gen = rule(
     },
 )
 
-def config_gen(name, config_src, includes = [], visibility = []):
+def _app_impl(ctx):
+    # The list of arguments we pass to the script.
+    out = ctx.actions.declare_file("srp_app.json")
+    args = [out.path, ctx.files.config_src[0].path, "/opt/"+ctx.attr.component_name+"/bin/"+ctx.attr.component_name]
+
+    # Action to call the script.
+    ctx.actions.run(
+        inputs = ctx.files.config_src,
+        outputs = [out],
+        arguments = args,
+        executable = ctx.executable.tool,
+    )
+    return [DefaultInfo(files = depset([out]))]
+
+bs_app_gen = rule(
+    implementation = _app_impl,
+    attrs = {
+        "config_src": attr.label_list(mandatory = False, allow_files = True),
+        "component_name": attr.string(),
+        "tool": attr.label(
+            executable = True,
+            cfg = "exec",
+            allow_files = True,
+            default = Label("//deployment/tools/configs/local_app_generator:app_generator"),
+        ),
+    },
+)
+
+def config_gen(name, component_name, config_src, includes = [], visibility = []):
     logger_gen(
         name = "logger",
         config_src = config_src,
@@ -65,11 +93,18 @@ def config_gen(name, config_src, includes = [], visibility = []):
         config_src = config_src,
         includes = includes,
     )
+    bs_app_gen(
+        name = "app_config_r",
+        config_src = config_src,
+        component_name = component_name,
+    )
+
     native.filegroup(
         name = name,
         visibility = visibility,
         srcs = [
             ":logger",
             ":someip_config",
+            ":app_config_r",
         ],
     )

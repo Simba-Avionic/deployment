@@ -1,0 +1,8 @@
+{
+    "platform":{
+        "name":"pc",
+        "ip":"192.168.10.102",
+        "mask": "",
+        "interface_name" : ""
+    }
+}

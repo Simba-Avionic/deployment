@@ -1,5 +1,5 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
-
+load("//deployment/bazel:config_gen.bzl", "config_gen")
 def _component_system_d(ctx):
     l = ""
     if (ctx.attr.diag_enable):
@@ -60,21 +60,12 @@ rename = rule(
     },
 )
 
-def srp_component(name, bin, app_id = "0", diag_enable = False, configs = [], start_parms = "", startup_prio = "0", startup_after_delay = "0", visibility = []):
-    component_app(
-        name = "srp_config",
-        app_name = name,
-        parms = start_parms,
-        startup_prio = startup_prio,
-        app_id = app_id,
-        diag_enable = diag_enable,
-        startup_after_delay = startup_after_delay,
-    )
+def srp_component(name, bin, configs = [],add_configs = [], visibility = []):
 
     pkg_tar(
         name = "config_files",
         package_dir = "opt/" + name + "/etc",
-        srcs = [":srp_config"] + configs,
+        srcs = [":_app_config"]+add_configs,
         # mode = "0777",
         visibility = ["//visibility:private"],
     )
@@ -104,4 +95,11 @@ def srp_component(name, bin, app_id = "0", diag_enable = False, configs = [], st
         ],
         # mode = "0777",
         visibility = visibility,
+    )
+
+    config_gen(
+        name = "_app_config",
+        config_src = configs,
+        component_name = name,
+        includes = ["//deployment:Apps"],
     )

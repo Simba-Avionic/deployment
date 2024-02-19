@@ -13,22 +13,32 @@ Przykładowy plik zawierający konfiguracje aplikacji posiadającej komunikacji 
             "log_level":"kInfo",
             "log_mode":"kConsole|kDLT"
         },
-        "someip":{
-            "service_id":10,
-            "mode":"kIPC|kUDP",
-            "port":1011,
-            "platform": "fc_cpu",
-            "methods":[
+        "someip": {
+            "service_id": 10,
+            "mode": "kUDP|kIPC",
+            "port": 1011,
+            "platform": "engine_computer",
+            "methods": [
                 {
-                    "name":"exampleMethod",
-                    "id":10
+                    "name": "exampleMethod",
+                    "id": 10
+                },
+                {
+                    "name": "exampleMethod2",
+                    "id": 11
                 }
             ],
-            "events":[
+            "events": [
                 {
-                    "name":"exampleEvent",
-                    "id":32769,
+                    "name": "exampleEvent",
+                    "id": 32769
                 }
+            ],
+            "req_methods": [
+                "ExampleApp/exampleMethod2"
+            ],
+            "req_events": [
+                "ExampleApp/exampleEvent"
             ]
         }
     }

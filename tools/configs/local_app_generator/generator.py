@@ -58,6 +58,14 @@ def FindSub(name,this_app):
             AddToDB(apps[a],this_app)
     return id_list
 
+def FindSubMethod(name,this_app):
+    id_list = []
+    for a in apps:
+        if name in apps[a].req_methods:
+            id_list.append(apps[a].id)
+            AddToDB(apps[a],this_app)
+    return id_list
+
 def FindServiceEvent(name,this_app):
     service_name = name.split("/")[0]
     method_name = name.split("/")[1]
@@ -65,6 +73,7 @@ def FindServiceEvent(name,this_app):
     method_id = app.events[method_name]
     AddToDB(app,this_app)
     return [app.id,method_id]
+
 
 
 def genConfig(app):
@@ -87,6 +96,7 @@ def genConfig(app):
         
     obj["pub_methods"] = {}
     for key in app.methods.keys():
+        FindSubMethod(app.name+"/"+key,app)
         obj["pub_methods"][app.name+"/"+key] = {}
         obj["pub_methods"][app.name+"/"+key]["method_id"]= app.methods[key]
     

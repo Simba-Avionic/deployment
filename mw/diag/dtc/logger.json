@@ -1,6 +1,0 @@
-{
-    "app_id": "DTCS",
-    "app_des": "DTC service",
-    "log_level": "kDebug",
-    "log_mode": "kConsole|kDLT"
-}
