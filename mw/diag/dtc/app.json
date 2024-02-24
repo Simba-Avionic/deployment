@@ -1,0 +1,13 @@
+{
+    "app": {
+        "name": "DtcService",
+        "bootMode": 8,
+        "diag_address": 256,
+        "logger": {
+            "app_id": "DTCS",
+            "app_des": "DTC service",
+            "log_level": "kDebug",
+            "log_mode": "kConsole|kDLT"
+        }
+    }
+}

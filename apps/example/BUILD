@@ -4,9 +4,13 @@ srp_component(
     name = "example",
     bin = "//apps/example",
     configs = [
-        "config.json",
-        "logger.json",
+        ":app_config"
     ],
     visibility = ["//deployment/cpu:__subpackages__"],
 )
 
+filegroup(
+    name = "app_config",
+    srcs = ["app.json"],
+    visibility = ["//deployment/apps:__subpackages__"],
+)
