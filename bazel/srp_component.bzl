@@ -1,36 +1,5 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("//deployment/bazel:config_gen.bzl", "config_gen")
-def _component_system_d(ctx):
-    l = ""
-    if (ctx.attr.diag_enable):
-        l = l + """
-    "diag_id":""" + "{}".format(int(ctx.attr.app_id,16)) + ""","""
-    out = ctx.actions.declare_file("srp_app.json")
-    ctx.actions.write(
-        output = out,
-        content = """
-{
-    """ + l + """
-    "bin_path":"/opt/""" + ctx.attr.app_name + """/bin/""" + ctx.attr.app_name + """\",
-    "parms":\"""" + ctx.attr.parms + """\",
-    "startup_prio":""" + ctx.attr.startup_prio + """,
-    "startup_after_delay":""" + ctx.attr.startup_after_delay + """
-}
-    """,
-    )
-    return [DefaultInfo(files = depset([out]))]
-
-component_app = rule(
-    implementation = _component_system_d,
-    attrs = {
-        "app_name": attr.string(),
-        "parms": attr.string(),
-        "startup_prio": attr.string(),
-        "app_id": attr.string(),
-        "diag_enable": attr.bool(),
-        "startup_after_delay": attr.string(),
-    },
-)
 
 def _impl(ctx):
     # The list of arguments we pass to the script.

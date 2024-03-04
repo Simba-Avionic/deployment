@@ -11,10 +11,12 @@ def main():
             if "app" not in obj:
                 raise Exception("Main config is not app")
             obj = obj["app"]
-            if "diag_address" in obj:
-                out_obj["diag_id"] = obj["diag_address"]
             
             out_obj["startup_prio"] = obj["bootMode"]
+            if "app_id" in obj:
+                out_obj["app_id"] = obj["app_id"]
+            else:
+                raise Exception("No app id")
             if "parms" in obj:
                 out_obj["parms"] = obj["parms"]
             else:

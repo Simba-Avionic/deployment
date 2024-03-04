@@ -1,8 +1,8 @@
 {
     "app": {
+        "app_id":258,
         "name": "EmServer",
         "bootMode": 10,
-        "diag_address": 258,
         "logger": {
             "app_id": "EM--",
             "app_des": "EM server",
@@ -21,6 +21,9 @@
             "req_methods": [
                 "ExampleApp/exampleMethod"
             ]
+        },
+        "diag":{
+            "service_id":258
         }
     }
 }
