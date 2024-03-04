@@ -20,6 +20,9 @@
             ],
             "req_methods": [
                 "ExampleApp/exampleMethod"
+            ],
+            "req_events": [
+                "ExampleApp/exampleEvent"
             ]
         },
         "diag":{

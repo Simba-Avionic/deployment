@@ -2,6 +2,7 @@
     "app": {
         "name":"ExampleApp",
         "bootMode":0,
+        "app_id":15,
         "logger":{
             "app_id": "EXAM",
             "app_des": "Przykladowa Aplikacja",

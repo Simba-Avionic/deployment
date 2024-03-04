@@ -19,3 +19,10 @@ py_binary(
     deps=["//deployment/tools/configs/local_app_generator/lib"],
     visibility = ["//visibility:public"],
 )
+
+
+py_binary(
+    name = "cpu_gen",
+    srcs = ["cpu_gen.py"],
+    visibility = ["//visibility:public"],
+)
