@@ -1,0 +1,42 @@
+{
+    "app": {
+        "name": "LoggerApp",
+        "bootMode": 0,
+        "app_id": 517,
+        "logger": {
+            "app_id": "LOGER",
+            "app_des": "Serwis do zapisywania danych z sensorów",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip": {
+            "service_id": 517,
+            "mode": "kUDP|kIPC",
+            "port": 1517,
+            "platform": "engine_computer",
+            "methods": [
+                {
+                    "name": "start",
+                    "id": 1
+                },
+                {
+                    "name": "stop",
+                    "id": 2
+                }
+            ],
+            "events": [],
+            "req_methods": [],
+            "req_events": [
+                "DiagOtaApp/newDTCEvent",
+                "ServoApp/servoStatusEvent",
+                "EnvApp/newTempEvent_1",
+                "EnvApp/newTempEvent_2",
+                "EnvApp/newTempEvent_3",
+                "EnvApp/newTempEvent_4",
+                "EnvApp/newPressEvent",
+                "EnvApp/newDPressEvent",
+                "PrimerApp/primeStatusEvent"
+            ]
+        }
+    }
+}

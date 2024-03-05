@@ -1,0 +1,43 @@
+{
+    "app": {
+        "name": "PrimerApp",
+        "bootMode": 0,
+        "app_id": 516,
+        "logger": {
+            "app_id": "PRIMS",
+            "app_des": "Serwis od Splonki",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip": {
+            "service_id": 516,
+            "mode": "kUDP|kIPC",
+            "port": 1516,
+            "platform": "engine_computer",
+            "methods": [
+                {
+                    "name": "onPrime",
+                    "com":"Wyłącza spłonke",
+                    "id": 1
+                },
+                {
+                    "name": "offPrime",
+                    "com":"Wyłącz spłonke",
+                    "id": 2
+                },
+                {
+                    "name": "startPrime",
+                    "com":"Startuje spłonke w trybie auto off",
+                    "id": 3
+                }
+            ],
+            "events": [
+                {
+                    "name": "primeStatusEvent",
+                    "id": 32769
+                }
+            ],
+            "req_methods": []
+        }
+    }
+}

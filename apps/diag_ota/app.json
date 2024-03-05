@@ -1,0 +1,40 @@
+{
+    "app": {
+        "name": "DiagOtaApp",
+        "bootMode": 0,
+        "app_id": 513,
+        "logger": {
+            "app_id": "DIAG",
+            "app_des": "diagnostyka i OTA",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip": {
+            "service_id": 513,
+            "mode": "kUDP|kIPC",
+            "port": 1513,
+            "platform": "engine_computer",
+            "methods": [
+                {
+                    "name": "diagMethodRequestJob",
+                    "id": 1
+                },
+                {
+                    "name": "diagMethodRequestRead",
+                    "id": 2
+                },
+                {
+                    "name": "diagMethodRequestWrite",
+                    "id": 3
+                }
+            ],
+            "events": [
+                {
+                    "name": "newDTCEvent",
+                    "id": 32769
+                }
+            ],
+            "req_methods": []
+        }
+    }
+}

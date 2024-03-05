@@ -1,0 +1,36 @@
+{
+    "app": {
+        "name": "ServoApp",
+        "bootMode": 0,
+        "app_id": 515,
+        "logger": {
+            "app_id": "SERVS",
+            "app_des": "Serwis od servo",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip": {
+            "service_id": 515,
+            "mode": "kUDP|kIPC",
+            "port": 1515,
+            "platform": "engine_computer",
+            "methods": [
+                {
+                    "name": "setServoValue",
+                    "id": 1
+                },
+                {
+                    "name": "readServoValue",
+                    "id": 2
+                }
+            ],
+            "events": [
+                {
+                    "name": "servoStatusEvent",
+                    "id": 32769
+                }
+            ],
+            "req_methods": []
+        }
+    }
+}

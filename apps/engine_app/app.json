@@ -1,0 +1,46 @@
+{
+    "app": {
+        "name": "EngineApp",
+        "bootMode": 0,
+        "app_id": 518,
+        "logger": {
+            "app_id": "ENGAP",
+            "app_des": "kontroller silika",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip": {
+            "service_id": 518,
+            "mode": "kUDP|kIPC",
+            "port": 1518,
+            "platform": "engine_computer",
+            "methods": [
+                {
+                    "name": "start",
+                    "id": 1
+                },
+                {
+                    "name": "setMode",
+                    "id": 2
+                }
+            ],
+            "events": [
+                {
+                    "name": "currentMode",
+                    "id": 32769
+                }
+            ],
+            "req_methods": [
+                "ServoApp/setServoValue",
+                "PrimerApp/startPrime",
+                "LoggerApp/start"
+            ],
+            "req_events": [
+                "DiagOtaApp/newDTCEvent",
+                "ServoApp/servoStatusEvent",
+                "EnvApp/newPressEvent",
+                "PrimerApp/primeStatusEvent"
+            ]
+        }
+    }
+}
