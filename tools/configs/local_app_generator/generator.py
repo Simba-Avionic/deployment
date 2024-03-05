@@ -17,6 +17,7 @@ def createApp(obj):
         req_method = obj_t["req_methods"]
     req_event = []
     if "req_events" in obj_t:
+
         req_event = obj_t["req_events"]
     return App_someip(obj["app"]["name"],obj_t["service_id"], obj_t["port"], obj_t["mode"],obj_t["platform"],obj_t["methods"],obj_t["events"],req_method,req_event)
 def createPlatform(obj):
@@ -108,16 +109,32 @@ def genConfig(app):
         obj["pub_event"][app.name+"/"+key]["subscribers"] = sub
     obj["req_methods"] = {}
     for m in app.req_methods:
-        obj["req_methods"][m] = {}
-        [id,method_id] = FindService(m,app)
-        obj["req_methods"][m]["service_id"] = id
-        obj["req_methods"][m]["method_id"] = method_id
+        if not "as" in m:
+            obj["req_methods"][m] = {}
+            [id,method_id] = FindService(m,app)
+            obj["req_methods"][m]["service_id"] = id
+            obj["req_methods"][m]["method_id"] = method_id
+        else:
+            a = m.split("as")
+            new_name = a[1].strip()
+            obj["req_methods"][app.name+"/"+new_name] = {}
+            [id,method_id] = FindService(a[0].strip(),app)
+            obj["req_methods"][app.name+"/"+new_name]["service_id"] = id
+            obj["req_methods"][app.name+"/"+new_name]["method_id"] = method_id
     obj["req_events"] = {}
     for m in app.req_events:
-        obj["req_events"][m] = {}
-        [id,method_id] = FindServiceEvent(m,app)
-        obj["req_events"][m]["service_id"] = id
-        obj["req_events"][m]["event_id"] = method_id
+        if not "as" in m:
+            obj["req_events"][m] = {}
+            [id,method_id] = FindServiceEvent(m,app)
+            obj["req_events"][m]["service_id"] = id
+            obj["req_events"][m]["event_id"] = method_id
+        else:
+            a = m.split("as")
+            new_name = a[1].strip()
+            obj["req_events"][app.name+"/"+new_name] = {}
+            [id,method_id] = FindServiceEvent(a[0].strip(),app)
+            obj["req_events"][app.name+"/"+new_name]["service_id"] = id
+            obj["req_events"][app.name+"/"+new_name]["event_id"] = method_id
         
     obj["db"] = {}
     obj["db"] = db
