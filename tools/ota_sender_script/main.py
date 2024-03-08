@@ -9,6 +9,6 @@ def socketCallback(data,client_adress):
     print(client_adress)
 
 s=Sender("test_tar.tar",socketCallback)
-print("start sending file")
-s.sendData()
-time.sleep(2)
+s.sendData("127.0.0.1",1000) # TU PODMIENIASZ NA ADRES SWOJEGO SERWISU
+time.sleep(10)
+
