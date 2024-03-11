@@ -32,7 +32,7 @@ def _start_service_script(ctx):
 ################################################################################
 #
 echo "Starting components SRP EM "
-/opt/em/bin/em
+/opt/em/bin/em &
 echo "Simab SRP start up component script [DONE]"
 """
     return content
