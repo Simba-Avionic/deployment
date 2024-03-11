@@ -4,7 +4,7 @@
         "name": "GPIOServer",
         "bootMode": 8,
         "logger": {
-            "app_id": "GPIO-",
+            "app_id": "GPIO",
             "app_des": "GPIO server",
             "log_level": "kDebug",
             "log_mode": "kConsole|kDLT"
