@@ -1,32 +1,34 @@
 {
     "app": {
-        "app_id":258,
-        "name": "EmServer",
-        "bootMode": 10,
+        "app_id":103,
+        "name": "GPIOServer",
+        "bootMode": 8,
         "logger": {
-            "app_id": "EM--",
-            "app_des": "EM server",
+            "app_id": "GPIO",
+            "app_des": "GPIO server",
             "log_level": "kDebug",
             "log_mode": "kConsole|kDLT"
         },
         "someip":{
             "service_id":258,
             "mode":"kUDP|kIPC",
-            "port":1011,
+            "port":1103,
             "platform": "engine_computer",
             "methods":[
+                {
+                    "name": "setGPIOValue",
+                    "id": 1
+                }
             ],
             "events":[
             ],
             "req_methods": [
-                "ExampleApp/exampleMethod"
             ],
             "req_events": [
-                "ExampleApp/exampleEvent"
             ]
         },
         "diag":{
-            "service_id":258
+            "service_id":103
         }
     }
 }

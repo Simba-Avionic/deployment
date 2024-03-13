@@ -1,6 +1,7 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 
 def _netinterface_script(ctx):
+    json_data = json.decode(ctx.apis.read(ctx.files.configs[0].path))
     content = """ 
 #!/bin/sh
 ################################################################################
@@ -9,10 +10,10 @@ def _netinterface_script(ctx):
 #
 ################################################################################
 #
-echo "Setting interface: """ + ctx.attr.interface_name + """ for """ + ctx.attr.cpu_name + """ "
-echo "ip: """ + ctx.attr.ip + """"
-echo "net mask """ + ctx.attr.mask + """ "
-ifconfig """ + ctx.attr.interface_name + """ """ + ctx.attr.ip + """ netmask """ + ctx.attr.mask + """
+echo "Setting interface: """ + json_data.encode("interface_name") + """ for """ + json_data.encode("name")  + """ "
+echo "ip: """ + json_data.encode("ip") + """"
+echo "net mask """ + json_data.encode("mask") + """ "
+ifconfig """ + json_data.encode("interface_name") + """ """ + json_data.encode("ip") + """ netmask """ + json_data.encode("mask") + """
 echo "Interface set [DONE]"
     """
     return content
@@ -22,15 +23,6 @@ def convert(path):
     return res
 
 def _start_service_script(ctx):
-    t = ""
-    ll = ""
-    for ob in ctx.files.components:
-        item = convert(ob.path)
-        t = t + """
-echo "Starting """ + item + """"
-/opt/""" + item + """/bin/""" + item + """ 2>&1 &
-echo " """ + item + """ Started "
-        """
     content = """ 
 #!/bin/sh
 ################################################################################
@@ -39,8 +31,8 @@ echo " """ + item + """ Started "
 #
 ################################################################################
 #
-echo "Starting components at""" + ctx.attr.cpu_name + """ "
-/opt/em/bin/em
+echo "Starting components SRP EM "
+/opt/em/bin/em &
 echo "Simab SRP start up component script [DONE]"
 """
     return content
@@ -70,29 +62,37 @@ def _start_service_list_impl(ctx):
     out3 = ctx.actions.declare_file("network_interface.sh")
     ctx.actions.write(output = out1, content = _startup_script(ctx))
     ctx.actions.write(output = out2, content = _start_service_script(ctx))
-    ctx.actions.write(output = out3, content = _netinterface_script(ctx))
+    # ctx.actions.write(output = out3, content = _netinterface_script(ctx))
+    # out = ctx.actions.declare_file("srp_app.json")
+    args = [out3.path, ctx.files.configs[0].path]
 
+    # Action to call the script.
+    ctx.actions.run(
+        inputs = ctx.files.configs,
+        outputs = [out3],
+        arguments = args,
+        executable = ctx.executable.tool,
+    )
     return [DefaultInfo(files = depset([out1, out2, out3]))]
 
 cpu_def_r = rule(
     implementation = _start_service_list_impl,
     attrs = {
-        "cpu_name": attr.string(),
-        "components": attr.label_list(mandatory = False, allow_files = True),
         "interface_name": attr.string(),
-        "ip": attr.string(),
-        "mask": attr.string(),
+        "configs": attr.label_list(mandatory = False, allow_files = True),
+        "tool": attr.label(
+            executable = True,
+            cfg = "exec",
+            allow_files = True,
+            default = Label("//deployment/tools/configs/local_app_generator:cpu_gen"),
+        ),
     },
 )
 
-def cpu_def(name, cpu_name, srp_components, interface_name, ip, mask):
+def cpu_def(name, srp_components,config):
     cpu_def_r(
         name = "cpu",
-        cpu_name = cpu_name,
-        components = srp_components,
-        interface_name = interface_name,
-        ip = ip,
-        mask = mask,
+        configs = [config],
     )
     pkg_tar(
         name = "config_pkg",

@@ -1,0 +1,48 @@
+{
+    "app": {
+        "name": "EnvApp",
+        "bootMode": 0,
+        "app_id": 514,
+        "logger": {
+            "app_id": "ENVA",
+            "app_des": "Czujniki srodowiskowe",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip": {
+            "service_id": 514,
+            "mode": "kUDP|kIPC",
+            "port": 1514,
+            "platform": "engine_computer",
+            "methods": [
+            ],
+            "events": [
+                {
+                    "name": "newTempEvent_1",
+                    "id": 32769
+                },
+                {
+                    "name": "newTempEvent_2",
+                    "id": 32770
+                },
+                {
+                    "name": "newTempEvent_3",
+                    "id": 32771
+                },
+                {
+                    "name": "newTempEvent_4",
+                    "id": 32772
+                },
+                {
+                    "name": "newPressEvent",
+                    "id": 32773
+                },
+                {
+                    "name": "newDPressEvent",
+                    "id": 32774
+                }
+            ],
+            "req_methods": []
+        }
+    }
+}
