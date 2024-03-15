@@ -1,6 +1,6 @@
 {
     "app": {
-        "name":"ExampleApp",
+        "name":"ExampleApp2",
         "bootMode":0,
         "app_id":15,
         "logger":{
@@ -13,7 +13,7 @@
             "service_id":15,
             "mode":"kUDP|kIPC",
             "port":1011,
-            "platform": "engine_computer",
+            "platform": "flight_computer",
             "methods":[
                 {
                     "name":"exampleMethod",
@@ -31,7 +31,6 @@
                 }
             ],
             "req_methods": [
-                "ExampleApp2/exampleMethod as someproxy"
             ]
         }
     }

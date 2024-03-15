@@ -8,6 +8,7 @@ filegroup(
         "//deployment/apps/logger_service:app_config",
         "//deployment/apps/prim_service:app_config",
         "//deployment/apps/servo_service:app_config",
+        "//deployment/apps/example2/example:app_config",
     ],
     visibility = ["//deployment:__subpackages__"],
 )
