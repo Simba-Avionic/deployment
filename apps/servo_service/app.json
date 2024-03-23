@@ -22,12 +22,24 @@
                 {
                     "name": "readServoValue",
                     "id": 2
+                },
+                {
+                    "name": "setServoVentValue",
+                    "id": 3
+                },
+                {
+                    "name": "readServoVentValue",
+                    "id": 4
                 }
             ],
             "events": [
                 {
                     "name": "servoStatusEvent",
                     "id": 32769
+                },
+                {
+                    "name": "servoVentStatusEvent",
+                    "id": 32770
                 }
             ],
             "req_methods": []

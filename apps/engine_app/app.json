@@ -32,12 +32,14 @@
             ],
             "req_methods": [
                 "ServoApp/setServoValue",
+                "ServoApp/setServoVentValue",
                 "PrimerApp/startPrime",
                 "LoggerApp/start"
             ],
             "req_events": [
                 "DiagOtaApp/newDTCEvent",
                 "ServoApp/servoStatusEvent",
+                "ServoApp/servoVentStatusEvent",
                 "EnvApp/newPressEvent",
                 "PrimerApp/primeStatusEvent"
             ]

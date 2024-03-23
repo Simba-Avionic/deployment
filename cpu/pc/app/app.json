@@ -19,6 +19,8 @@
             "req_methods": [
                 "ServoApp/setServoValue as setServoValue",
                 "ServoApp/readServoValue as readServoValue",
+                "ServoApp/setServoVentValue as setVentValue",
+                "ServoApp/readServoVentValue as readVentValue",
                 "PrimerApp/startPrime as startPrime",
                 "PrimerApp/onPrime as onPrime",
                 "PrimerApp/offPrime as offPrime",
@@ -31,6 +33,7 @@
                 "DiagOtaApp/diagMethodRequestWrite as diagMethodRequestWrite"
             ],
             "req_events": [
+                "ServoApp/servoVentStatusEvent as servoVentStatusEvent",
                 "ServoApp/servoStatusEvent as servoStatusEvent",
                 "EnvApp/newTempEvent_1 as newTempEvent_1",
                 "EnvApp/newTempEvent_2 as newTempEvent_2",
