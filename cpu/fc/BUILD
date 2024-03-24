@@ -4,8 +4,8 @@ cpu_def(
     name = "pkg",
     config = ":config",
     srp_components = [
-        "//deployment/mw/loger/dlt_fc:dlt_server",
-        "//deployment/apps/example",
+        "//deployment/mw/loger/dlt_fc/fc:dlt_server",
+        "//deployment/apps/example2/example",
         "//deployment/mw/em",
         # "//deployment/mw/diag/dtc:dtc_service",
         "//deployment/mw/gpio"

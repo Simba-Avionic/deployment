@@ -1,8 +1,8 @@
 {
     "app": {
-        "name":"ExampleApp",
+        "name":"ExampleApp2",
         "bootMode":0,
-        "app_id":15,
+        "app_id":16,
         "logger":{
             "app_id": "EXAM",
             "app_des": "Przykladowa Aplikacja",
@@ -10,10 +10,10 @@
             "log_mode": "kConsole|kDLT"
         },
         "someip":{
-            "service_id":15,
+            "service_id":16,
             "mode":"kUDP|kIPC",
-            "port":1015,
-            "platform": "engine_computer",
+            "port":1016,
+            "platform": "flight_computer",
             "methods":[
                 {
                     "name":"exampleMethod",
@@ -31,10 +31,7 @@
                 }
             ],
             "req_methods": [
-                "ExampleApp2/exampleMethod as someproxy"
-            ],
-            "req_events": [
-                "ExampleApp2/exampleEvent as someevent"
+                "ExampleApp/exampleMethod as someproxy"
             ]
         }
     }

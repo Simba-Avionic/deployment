@@ -6,3 +6,10 @@ flash_ecu(
     ip = "192.168.10.101",
     user_name = "root",
 )
+
+flash_ecu(
+    name = "flash_fc",
+    file = ["//deployment/cpu/fc:pkg"],
+    ip = "192.168.10.102",
+    user_name = "root",
+)
