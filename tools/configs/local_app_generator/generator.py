@@ -20,6 +20,27 @@ def createApp(obj):
 
         req_event = obj_t["req_events"]
     return App_someip(obj["app"]["name"],obj_t["service_id"], obj_t["port"], obj_t["mode"],obj_t["platform"],obj_t["methods"],obj_t["events"],req_method,req_event)
+
+
+def createAppOther(obj):
+    obj_t = obj["app"]
+    if "someip" not in obj_t:
+        raise Exception("No someip app")
+    obj_t = obj_t["someip"]
+    req_method = []
+    if "req_methods" in obj_t:
+        req_method = obj_t["req_methods"]
+    req_event = []
+    if "req_events" in obj_t:
+        for event in obj_t["req_events"]:
+            if "as" in event:
+                a = event.split("as")
+                req_event.append(a[0].strip())
+            else:
+                req_event.append(event)
+    return App_someip(obj["app"]["name"],obj_t["service_id"], obj_t["port"], obj_t["mode"],obj_t["platform"],obj_t["methods"],obj_t["events"],req_method,req_event)
+
+
 def createPlatform(obj):
     return Platform(obj["platform"]["ip"])
 
@@ -156,7 +177,7 @@ def main():
                 obj = json.loads(src_b.read())
                 if "app" in obj:
                     if "someip" in obj["app"]:
-                        apps[obj["app"]["name"]] = createApp(obj)
+                        apps[obj["app"]["name"]] = createAppOther(obj)
                 elif "platform" in obj:
                     platforms[obj["platform"]["name"]] = createPlatform(obj)
                         

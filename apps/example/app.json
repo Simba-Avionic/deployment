@@ -12,7 +12,7 @@
         "someip":{
             "service_id":15,
             "mode":"kUDP|kIPC",
-            "port":1011,
+            "port":1015,
             "platform": "engine_computer",
             "methods":[
                 {
@@ -32,6 +32,9 @@
             ],
             "req_methods": [
                 "ExampleApp2/exampleMethod as someproxy"
+            ],
+            "req_events": [
+                "ExampleApp2/exampleEvent as someevent"
             ]
         }
     }
