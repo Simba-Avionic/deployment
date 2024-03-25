@@ -1,0 +1,20 @@
+{
+    "servos":[
+        {
+            "actuator_id":60,
+            "on_pos":500,
+            "off_pos":1500,
+            "channel":0,
+            "mosfet_id":1,
+            "desc":"główny zawór silnika"
+        },
+        {
+            "actuator_id":61,
+            "on_pos":1500,
+            "off_pos":500,
+            "channel":1,
+            "mosfet_id":2,
+            "desc":"vent silnika"
+        }
+    ]
+}

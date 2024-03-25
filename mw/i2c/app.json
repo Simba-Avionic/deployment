@@ -1,0 +1,34 @@
+{
+    "app": {
+        "app_id":104,
+        "name": "I2CServer",
+        "bootMode": 8,
+        "logger": {
+            "app_id": "I2C-",
+            "app_des": "I2C server",
+            "log_level": "kDebug",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip":{
+            "service_id":104,
+            "mode":"kUDP|kIPC",
+            "port":1104,
+            "platform": "engine_computer",
+            "methods":[
+                {
+                    "name": "setServoValue",
+                    "id": 1
+                }
+            ],
+            "events":[
+            ],
+            "req_methods": [
+            ],
+            "req_events": [
+            ]
+        },
+        "diag":{
+            "service_id":104
+        }
+    }
+}
