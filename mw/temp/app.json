@@ -1,10 +1,10 @@
 {
     "app": {
-        "app_id":260,
+        "app_id":261,
         "name": "TempService",
         "bootMode": 8,
         "diag":{
-            "service_id":260
+            "service_id":261
         },
         "logger": {
             "app_id": "TEMP",

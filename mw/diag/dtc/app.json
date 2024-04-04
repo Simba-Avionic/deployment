@@ -1,9 +1,9 @@
 {
     "app": {
         "name": "DtcService",
-        "app_id":256,
+        "app_id":257,
         "bootMode": 8,
-        "diag_address": 256,
+        "diag_address": 257,
         "logger": {
             "app_id": "DTCS",
             "app_des": "DTC service",

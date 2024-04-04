@@ -1,6 +1,6 @@
 {
     "app": {
-        "app_id":104,
+        "app_id":260,
         "name": "I2CServer",
         "bootMode": 8,
         "logger": {
@@ -10,9 +10,9 @@
             "log_mode": "kConsole|kDLT"
         },
         "someip":{
-            "service_id":104,
+            "service_id":260,
             "mode":"kUDP|kIPC",
-            "port":1104,
+            "port":1260,
             "platform": "engine_computer",
             "methods":[
                 {
@@ -28,7 +28,7 @@
             ]
         },
         "diag":{
-            "service_id":104
+            "service_id":260
         }
     }
 }

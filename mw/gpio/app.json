@@ -1,6 +1,6 @@
 {
     "app": {
-        "app_id":103,
+        "app_id":259,
         "name": "GPIOServer",
         "bootMode": 8,
         "logger": {
@@ -10,9 +10,9 @@
             "log_mode": "kConsole|kDLT"
         },
         "someip":{
-            "service_id":258,
+            "service_id":259,
             "mode":"kUDP|kIPC",
-            "port":1103,
+            "port":1259,
             "platform": "engine_computer",
             "methods":[
                 {
@@ -28,7 +28,7 @@
             ]
         },
         "diag":{
-            "service_id":103
+            "service_id":259
         }
     }
 }
