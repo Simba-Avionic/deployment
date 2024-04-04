@@ -9,7 +9,8 @@ cpu_def(
         "//deployment/mw/em",
         # "//deployment/mw/diag/dtc:dtc_service",
         "//deployment/mw/gpio",
-        "//deployment/mw/i2c"
+        # "//deployment/mw/i2c",
+        "//deployment/mw/temp:temp_service"
     ],
 )
 

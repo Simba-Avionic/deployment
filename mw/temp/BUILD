@@ -1,8 +1,8 @@
 load("//deployment/bazel:srp_component.bzl", "srp_component")
 
 srp_component(
-    name = "i2c",
-    bin = "//mw/i2c_service:i2c_service",
+    name = "temp_service",
+    bin = "//mw/temp/service:temp_service_mw",
     configs = [
         ":config",
     ],
@@ -13,8 +13,6 @@ srp_component(
 )
 filegroup(
     name = "config",
-    srcs = [
-        "app.json",
-        ],
+    srcs = ["app.json"],
     visibility = ["//deployment/mw:__subpackages__"],
 )
