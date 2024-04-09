@@ -5,14 +5,16 @@
             "on_pos":500,
             "off_pos":1500,
             "channel":0,
-            "mosfet_id":1
+            "mosfet_id":1,
+            "servo_delay":255,
+            "mosfet_time":1000
+
         },
         {
             "actuator_id":61,
             "on_pos":1500,
             "off_pos":500,
-            "channel":1,
-            "mosfet_id":2
+            "channel":1
         }
     ]
 }
