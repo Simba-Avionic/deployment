@@ -4,6 +4,8 @@
             "actuator_id":60,
             "on_pos":500,
             "off_pos":1500,
+            "on_losening_pos":1450,
+            "off_losening_pos":450,
             "channel":0,
             "mosfet_id":1,
             "servo_delay":255,
