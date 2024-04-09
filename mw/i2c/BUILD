@@ -6,9 +6,6 @@ srp_component(
     configs = [
         ":config",
     ],
-    add_configs = [
-        "config.json",
-    ],
     visibility = ["//deployment/cpu:__subpackages__"],
 )
 filegroup(
