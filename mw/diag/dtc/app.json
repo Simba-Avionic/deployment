@@ -7,7 +7,7 @@
         "logger": {
             "app_id": "DTCS",
             "app_des": "DTC service",
-            "log_level": "kDebug",
+            "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
         }
     }

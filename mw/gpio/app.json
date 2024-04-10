@@ -6,7 +6,7 @@
         "logger": {
             "app_id": "GPIO",
             "app_des": "GPIO server",
-            "log_level": "kDebug",
+            "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
         },
         "someip":{
