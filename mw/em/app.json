@@ -8,25 +8,6 @@
             "app_des": "EM server",
             "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
-        },
-        "someip":{
-            "service_id":258,
-            "mode":"kUDP|kIPC",
-            "port":1011,
-            "platform": "engine_computer",
-            "methods":[
-            ],
-            "events":[
-            ],
-            "req_methods": [
-                "ExampleApp/exampleMethod"
-            ],
-            "req_events": [
-                "ExampleApp/exampleEvent"
-            ]
-        },
-        "diag":{
-            "service_id":258
         }
     }
 }
