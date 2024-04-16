@@ -52,7 +52,7 @@
             "id":9,
             "num":13,
             "direction":"out",
-            "desc":"11"
+            "desc":"P8_11"
         },
         {
             "id":10,
@@ -95,12 +95,6 @@
             "num":29,
             "direction":"out",
             "desc":"P8_26"
-        },
-        {
-            "id":17,
-            "num":28,
-            "direction":"out",
-            "desc":"P9_12"
         }
     ]
 }
