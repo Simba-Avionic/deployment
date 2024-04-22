@@ -1,0 +1,12 @@
+{
+    "app": {
+        "name":"TestApp",
+        "bootMode":0,
+        "logger":{
+            "app_id": "TEST",
+            "app_des": "Przykladowa Aplikacja",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        }
+    }
+}

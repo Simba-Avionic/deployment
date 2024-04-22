@@ -11,6 +11,7 @@ cpu_def(
     srp_components = [
         "//deployment/mw/loger/dlt_fc:dlt_server",
         "//deployment/apps/example",
+        "//deployment/apps/test",
         "//deployment/mw/em",
         "//deployment/mw/diag/dtc:dtc_service",
     ],
