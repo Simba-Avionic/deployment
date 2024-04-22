@@ -10,6 +10,7 @@ cpu_def(
         "//deployment/mw/gpio",
         "//deployment/mw/temp:temp_service",
         "//deployment/apps/env_service",
+        "//deployment/apps/exampleApp",
         # "//deployment/mw/diag/dtc:dtc_service",
         #"//deployment/mw/i2c:i2c_service",
     ],
