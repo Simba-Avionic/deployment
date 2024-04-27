@@ -40,9 +40,16 @@
                 {
                     "name": "newDTCEvent",
                     "id": 32769
+                },
+                {
+                    "name": "currentMode",
+                    "id": 32770
                 }
             ],
             "req_methods": []
+        },
+        "diag": {
+            "service_id": 513
         }
     }
 }

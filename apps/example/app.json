@@ -36,7 +36,8 @@
                 "ExampleApp2/exampleMethod as someproxy"
             ],
             "req_events": [
-                "ExampleApp2/exampleEvent as someevent"
+                "ExampleApp2/exampleEvent as someevent",
+                "EC_DiagOtaApp/currentMode as currentMode"
             ]
         }
     }
