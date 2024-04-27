@@ -26,3 +26,9 @@ py_binary(
     srcs = ["cpu_gen.py"],
     visibility = ["//visibility:public"],
 )
+
+py_binary(
+    name = "someip_code_generator",
+    srcs = ["someip_code_generator.py"],
+    visibility = ["//visibility:public"],
+)

@@ -17,11 +17,13 @@
             "methods":[
                 {
                     "name":"exampleMethod",
-                    "id":10
+                    "id":10,
+                    "access_list":["ExampleApp2"]
                 },
                 {
                     "name":"exampleMethod2",
-                    "id":100
+                    "id":100,
+                    "access_list":["EngineApp"]
                 }
             ],
             "events":[
