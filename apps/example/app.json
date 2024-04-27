@@ -31,7 +31,8 @@
                 }
             ],
             "req_methods": [
-                "ExampleApp2/exampleMethod as someproxy"
+                "ExampleApp2/exampleMethod as someproxy",
+                "ServoApp/setServoValue as setServoValue"
             ],
             "req_events": [
                 "ExampleApp2/exampleEvent as someevent"

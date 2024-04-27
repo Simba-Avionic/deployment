@@ -1,7 +1,7 @@
 load("//deployment/bazel:srp_component.bzl", "srp_component")
 
 srp_component(
-    name = "primer",
+    name = "servoService",
     bin = "//services/ServoService",
     configs = [
         ":app_config"
