@@ -31,7 +31,8 @@
                 }
             ],
             "req_methods": [
-                "ExampleApp/exampleMethod as someproxy"
+                "ExampleApp/exampleMethod as someproxy",
+                "ExampleApp/exampleMethod2 as someproxy2"
             ]
         }
     }
