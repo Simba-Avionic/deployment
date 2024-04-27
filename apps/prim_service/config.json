@@ -1,3 +1,6 @@
 {
-    "primer":1
+    "primer":{
+        "id":1,
+        "active_time":250
+    }
 }
