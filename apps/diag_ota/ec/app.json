@@ -1,6 +1,6 @@
 {
     "app": {
-        "name": "DiagOtaApp",
+        "name": "EC_DiagOtaApp",
         "bootMode": 0,
         "app_id": 513,
         "logger": {
@@ -26,6 +26,14 @@
                 {
                     "name": "diagMethodRequestWrite",
                     "id": 3
+                },
+                {
+                    "name": "diagGetEcuID",
+                    "id": 4
+                },
+                {
+                    "name": "diagSetMode",
+                    "id": 5
                 }
             ],
             "events": [

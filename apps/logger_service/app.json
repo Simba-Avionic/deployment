@@ -27,7 +27,7 @@
             "events": [],
             "req_methods": [],
             "req_events": [
-                "DiagOtaApp/newDTCEvent",
+                "EC_DiagOtaApp/newDTCEvent",
                 "ServoApp/servoStatusEvent",
                 "EnvApp/newTempEvent_1",
                 "EnvApp/newTempEvent_2",

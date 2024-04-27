@@ -7,8 +7,7 @@ cpu_def(
         "//deployment/mw/loger/dlt_fc/fc:dlt_server",
         "//deployment/apps/example2/example",
         "//deployment/mw/em",
-        # "//deployment/mw/diag/dtc:dtc_service",
-        "//deployment/mw/gpio"
+        "//deployment/mw/gpio",
     ],
 )
 

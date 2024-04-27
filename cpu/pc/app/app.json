@@ -28,9 +28,12 @@
                 "LoggerApp/stop as LoggerStop",
                 "EngineApp/start as EngineStart",
                 "EngineApp/setMode as EngineSetMode",
-                "DiagOtaApp/diagMethodRequestJob as diagMethodRequestJob",
-                "DiagOtaApp/diagMethodRequestRead as diagMethodRequestRead",
-                "DiagOtaApp/diagMethodRequestWrite as diagMethodRequestWrite"
+                "EC_DiagOtaApp/diagMethodRequestJob as EC_diagMethodRequestJob",
+                "EC_DiagOtaApp/diagMethodRequestRead as EC_diagMethodRequestRead",
+                "EC_DiagOtaApp/diagMethodRequestWrite as EC_diagMethodRequestWrite",
+                "FC_DiagOtaApp/diagMethodRequestJob as FC_diagMethodRequestJob",
+                "FC_DiagOtaApp/diagMethodRequestRead as FC_diagMethodRequestRead",
+                "FC_DiagOtaApp/diagMethodRequestWrite as FC_diagMethodRequestWrite"
             ],
             "req_events": [
                 "ServoApp/servoVentStatusEvent as servoVentStatusEvent",
@@ -42,7 +45,8 @@
                 "EnvApp/newPressEvent as newPressEvent",
                 "EnvApp/newDPressEvent as newDPressEvent",
                 "PrimerApp/primeStatusEvent as primeStatusEvent",
-                "DiagOtaApp/newDTCEvent as newDTCEvent",
+                "EC_DiagOtaApp/newDTCEvent as EC_newDTCEvent",
+                "FC_DiagOtaApp/currentMode as FC_currentCPUMode",
                 "EngineApp/currentMode as currentMode"
             ]
         }

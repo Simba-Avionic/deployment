@@ -2,7 +2,7 @@
     "app": {
         "app_id":261,
         "name": "TempService",
-        "bootMode": 8,
+        "bootMode": 9,
         "diag":{
             "service_id":261
         },

@@ -2,12 +2,12 @@
     "app": {
         "name": "DtcService",
         "app_id":257,
-        "bootMode": 8,
+        "bootMode": 9,
         "diag_address": 257,
         "logger": {
             "app_id": "DTCS",
             "app_des": "DTC service",
-            "log_level": "kDebug",
+            "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
         }
     }

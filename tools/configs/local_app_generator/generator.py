@@ -29,7 +29,11 @@ def createAppOther(obj):
     obj_t = obj_t["someip"]
     req_method = []
     if "req_methods" in obj_t:
-        req_method = obj_t["req_methods"]
+        temp = obj_t["req_methods"]
+        for item in temp:
+            out = item.split("as")[0].strip()
+            req_method.append(out)
+
     req_event = []
     if "req_events" in obj_t:
         for event in obj_t["req_events"]:
@@ -66,7 +70,7 @@ def FindService(name,this_app):
     service_name = name.split("/")[0]
     method_name = name.split("/")[1]
     app = apps[service_name]
-    method_id = app.methods[method_name]
+    method_id = app.methods[method_name]["id"]
     AddToDB(app,this_app)
     return [app.id,method_id]
 
@@ -92,7 +96,7 @@ def FindServiceEvent(name,this_app):
     service_name = name.split("/")[0]
     method_name = name.split("/")[1]
     app = apps[service_name]
-    method_id = app.events[method_name]
+    method_id = app.events[method_name]["id"]
     AddToDB(app,this_app)
     return [app.id,method_id]
 
@@ -120,13 +124,16 @@ def genConfig(app):
     for key in app.methods.keys():
         FindSubMethod(app.name+"/"+key,app)
         obj["pub_methods"][app.name+"/"+key] = {}
-        obj["pub_methods"][app.name+"/"+key]["method_id"]= app.methods[key]
+        obj["pub_methods"][app.name+"/"+key]["method_id"]= app.methods[key]["id"]
+        obj["pub_methods"][app.name+"/"+key]["access_list"] = []
+        for names in app.methods[key]["access_list"]:
+            obj["pub_methods"][app.name+"/"+key]["access_list"].append(apps[names].id);
     
     obj["pub_event"] = {}
     for key in app.events.keys():
         sub = FindSub(app.name+"/"+key,app)
         obj["pub_event"][app.name+"/"+key] = {} 
-        obj["pub_event"][app.name+"/"+key]["event_id"] = app.events[key]
+        obj["pub_event"][app.name+"/"+key]["event_id"] = app.events[key]["id"]
         obj["pub_event"][app.name+"/"+key]["subscribers"] = sub
     obj["req_methods"] = {}
     for m in app.req_methods:
@@ -176,8 +183,11 @@ def main():
             with open(sys.argv[i]) as src_b:
                 obj = json.loads(src_b.read())
                 if "app" in obj:
-                    if "someip" in obj["app"]:
-                        apps[obj["app"]["name"]] = createAppOther(obj)
+                    if "someip" in obj["app"] and obj["app"]["name"] != this_app.name:
+                        if obj["app"]["name"] not in apps:
+                            apps[obj["app"]["name"]] = createAppOther(obj)
+                        else:
+                            raise Exception("Double app name detected !!! ("+obj["app"]["name"]+")")
                 elif "platform" in obj:
                     platforms[obj["platform"]["name"]] = createPlatform(obj)
                         
