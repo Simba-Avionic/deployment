@@ -33,7 +33,9 @@
                 }
             ],
             "req_methods": [
-                "ExampleApp2/exampleMethod as someproxy"
+                "ExampleApp2/exampleMethod as someproxy",
+                "PrimerApp/offPrime as offPrime",
+                "PrimerApp/onPrime as onPrime"
             ],
             "req_events": [
                 "ExampleApp2/exampleEvent as someevent",

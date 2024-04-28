@@ -4,7 +4,7 @@
         "bootMode": 0,
         "app_id": 516,
         "logger": {
-            "app_id": "PRIMS",
+            "app_id": "PRIM",
             "app_des": "Serwis od Splonki",
             "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
