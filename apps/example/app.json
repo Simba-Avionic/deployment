@@ -17,11 +17,13 @@
             "methods":[
                 {
                     "name":"exampleMethod",
-                    "id":10
+                    "id":10,
+                    "access_list":["ExampleApp2"]
                 },
                 {
                     "name":"exampleMethod2",
-                    "id":100
+                    "id":100,
+                    "access_list":["EngineApp"]
                 }
             ],
             "events":[
@@ -36,7 +38,8 @@
                 "PrimerApp/onPrime as onPrime"
             ],
             "req_events": [
-                "ExampleApp2/exampleEvent as someevent"
+                "ExampleApp2/exampleEvent as someevent",
+                "EC_DiagOtaApp/currentMode as currentMode"
             ]
         }
     }

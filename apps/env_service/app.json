@@ -1,7 +1,7 @@
 {
     "app": {
         "name": "EnvApp",
-        "bootMode": 0,
+        "bootMode": 1,
         "app_id": 514,
         "logger": {
             "app_id": "ENVA",

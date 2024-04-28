@@ -11,6 +11,7 @@ cpu_def(
         "//deployment/mw/temp:temp_service",
         "//deployment/apps/env_service",
         "//deployment/apps/prim_service",
+        "//deployment/apps/diag_ota/ec:diag_ota",
         # "//deployment/mw/diag/dtc:dtc_service",
         #"//deployment/mw/i2c:i2c_service",
     ],
