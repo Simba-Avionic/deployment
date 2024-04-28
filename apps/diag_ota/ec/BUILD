@@ -4,6 +4,7 @@ srp_component(
     name = "diag_ota",
     add_configs = [
         "config.json",
+        "//libdoip/examples:example_server",
     ],
     bin = "//apps/diag_ota/code:diag_ota",
     configs = [
