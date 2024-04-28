@@ -4,7 +4,7 @@
         "bootMode": 0,
         "app_id": 515,
         "logger": {
-            "app_id": "SERVS",
+            "app_id": "SERV",
             "app_des": "Serwis od servo",
             "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
