@@ -1,0 +1,13 @@
+{
+    "app": {
+        "name":"HomeworkApp",
+        "bootMode":0,
+        "app_id":666,
+        "logger":{
+            "app_id": "HOME",
+            "app_des": "Przykladowa Aplikacja",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        }
+    }
+}
