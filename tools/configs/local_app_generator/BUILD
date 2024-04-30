@@ -3,6 +3,7 @@ py_binary(
     srcs = ["generator.py"],
     deps=["//deployment/tools/configs/local_app_generator/lib"],
     visibility = ["//visibility:public"],
+    imports = ["."]
 )
 
 
