@@ -1,4 +1,5 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+load("//deployment/bazel:connect_tar.bzl", "connect_tar")
 
 def _netinterface_script(ctx):
     json_data = json.decode(ctx.apis.read(ctx.files.configs[0].path))
@@ -98,12 +99,11 @@ def cpu_def(name, srp_components,config):
         name = "config_pkg",
         package_dir = "opt/cpu_simba",
         srcs = [":cpu"],
-        mode = "0777",
         visibility = ["//visibility:private"],
     )
-    pkg_tar(
-        name = name,
-        deps = [":config_pkg"] + srp_components,
-        mode = "0777",
+
+    connect_tar(
+            name = name,
+        srcs = [":config_pkg"] + srp_components,
         visibility = ["//visibility:public"],
     )

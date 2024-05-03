@@ -1,5 +1,6 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("//deployment/bazel:config_gen.bzl", "config_gen")
+load("//deployment/bazel:connect_tar.bzl", "connect_tar")
 
 def _impl(ctx):
     # The list of arguments we pass to the script.
@@ -29,6 +30,8 @@ rename = rule(
     },
 )
 
+
+
 def srp_component(name, bin, configs = [],add_configs = [], visibility = []):
 
     pkg_tar(
@@ -56,13 +59,12 @@ def srp_component(name, bin, configs = [],add_configs = [], visibility = []):
         visibility = ["//visibility:private"],
     )
 
-    pkg_tar(
-        name = name,
-        deps = [
-            ":config_files",
+    connect_tar(
+            name = name,
+        srcs = [
             ":bin-pkg",
+            ":config_files",
         ],
-        # mode = "0777",
         visibility = visibility,
     )
 

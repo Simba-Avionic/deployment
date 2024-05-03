@@ -9,3 +9,9 @@ sh_binary(
     srcs = ["flash.sh"],
     visibility = ["//visibility:public"],
 )
+
+sh_binary(
+    name = "connect_tar_sh",
+    srcs = ["connect_tar.sh"],
+    visibility = ["//visibility:public"],
+)

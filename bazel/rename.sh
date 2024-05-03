@@ -1,3 +1,1 @@
-echo "Start"
-
-mv $2 $1
+cp $2 $1

@@ -4,6 +4,11 @@ import sys
 def check_logger_config(obj):
     if "app_id" not in obj:
         raise Exception("Logger don't have: app_id")
+    else:
+        if(len(obj["app_id"]) > 4):
+            new_app_id = obj["app_id"][0:4];
+            print("App id for logger are too long transform "+obj["app_id"]+"->"+new_app_id+" !")
+            obj["app_id"] = new_app_id
     if "app_des" not in obj:
         raise Exception("Logger don't have: app_des")
     if "log_level" not in obj:
@@ -23,6 +28,7 @@ def main():
             if "logger" not in obj:
                 raise Exception("Logger config not exist in json file")
             check_logger_config(obj["logger"])
+
             out.write(json.dumps(obj["logger"],indent=2))
             out.close()
     
