@@ -10,6 +10,11 @@ srp_component(
     configs = [
         ":app_config",
     ],
+    includes_diag = [
+        "//deployment/system_definition/diag/jobs:read_vin_job",
+        "//deployment/system_definition/diag/jobs:start_rid",
+        "//deployment/system_definition/diag/jobs:hard_restart",
+    ],
     visibility = ["//deployment/cpu:__subpackages__"],
 )
 

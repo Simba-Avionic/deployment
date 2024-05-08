@@ -6,7 +6,7 @@ def _impl_diag(ctx):
 
     # Action to call the script.
     ctx.actions.run(
-        inputs = ctx.files.config_src,
+        inputs = ctx.files.config_src + ctx.files.includes,
         outputs = [out],
         arguments = args,
         executable = ctx.executable.tool,
@@ -17,11 +17,12 @@ bs_diag_gen = rule(
     implementation = _impl_diag,
     attrs = {
         "config_src": attr.label_list(mandatory = False, allow_files = True),
+        "includes": attr.label_list(mandatory = False, allow_files = True),
         "tool": attr.label(
             executable = True,
             cfg = "exec",
             allow_files = True,
-            default = Label("//deployment/tools/configs/local_app_generator:app_diag_gen"),
+            default = Label("//deployment/tools/configs/diag:app_diag_gen"),
         ),
     },
 )
@@ -112,7 +113,7 @@ bs_app_gen = rule(
     },
 )
 
-def config_gen(name, component_name, config_src, includes = [], visibility = []):
+def config_gen(name, component_name, config_src, includes = [], includes_diag=[], visibility = []):
     logger_gen(
         name = "logger",
         config_src = config_src,
@@ -130,6 +131,7 @@ def config_gen(name, component_name, config_src, includes = [], visibility = [])
     bs_diag_gen(
         name = "diag",
         config_src = config_src,
+        includes = includes_diag,
     )
     native.filegroup(
         name = name,

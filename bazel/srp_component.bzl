@@ -32,7 +32,7 @@ rename = rule(
 
 
 
-def srp_component(name, bin, configs = [],add_configs = [], visibility = []):
+def srp_component(name, bin, configs = [],add_configs = [], visibility = [], includes_diag=[]):
 
     pkg_tar(
         name = "config_files",
@@ -73,4 +73,5 @@ def srp_component(name, bin, configs = [],add_configs = [], visibility = []):
         config_src = configs,
         component_name = name,
         includes = ["//deployment:Apps"],
+        includes_diag = includes_diag,
     )
