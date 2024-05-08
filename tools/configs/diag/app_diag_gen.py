@@ -55,20 +55,20 @@ def main():
                     if " as " in job:
                         a = job.split(" as ")
                         out_obj["provide"][name+"/"+a[1]] = {}
-                        out_obj["provide"][name+"/"+a[1]]["id"] = ((int(jobs[a[0]].s_id_list)<<16)+jobs[a[0]].sub_id)
+                        out_obj["provide"][name+"/"+a[1]]["id"] = str(((int(jobs[a[0]].s_id_list)<<16)+jobs[a[0]].sub_id))
                     else:
                         out_obj["provide"][name+"/"+job] = {}
-                        out_obj["provide"][name+"/"+job]["id"] = ((int(jobs[job].s_id_list)<<16)+jobs[job].sub_id)
+                        out_obj["provide"][name+"/"+job]["id"] = str(((int(jobs[job].s_id_list)<<16)+jobs[job].sub_id))
             out_obj["require"] = {}
             if "require" in obj["diag"]:
                 for job in obj["diag"]["require"]:
                     if " as " in job:
                         a = job.split(" as ")
                         out_obj["require"][name+"/"+a[1]] = {}
-                        out_obj["require"][name+"/"+a[1]]["id"] = ((int(jobs[a[0]].s_id_list)<<16)+jobs[a[0]].sub_id)
+                        out_obj["require"][name+"/"+a[1]]["id"] = str(((int(jobs[a[0]].s_id_list)<<16)+jobs[a[0]].sub_id))
                     else:
                         out_obj["require"][name+"/"+job] = {}
-                        out_obj["require"][name+"/"+job]["id"] = ((int(jobs[job].s_id_list)<<16)+jobs[job].sub_id)
+                        out_obj["require"][name+"/"+job]["id"] = str(((int(jobs[job].s_id_list)<<16)+jobs[job].sub_id))
         out.write(json.dumps(out_obj, indent=2))
 
 
