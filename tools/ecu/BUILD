@@ -13,3 +13,10 @@ flash_ecu(
     ip = "192.168.10.102",
     user_name = "root",
 )
+
+flash_ecu(
+    name = "flash_ec_sym",
+    file = ["//deployment/cpu/ec:pkg"],
+    ip = "192.168.11.2",
+    user_name = "root",
+)
