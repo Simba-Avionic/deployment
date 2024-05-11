@@ -1,0 +1,36 @@
+{
+    "app": {
+        "name": "JakuApp",
+        "bootMode": 1,
+        "app_id": 555,
+        "logger": {
+            "app_id": "ENVA",
+            "app_des": "jaku apka cos tam wysyla",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip": {
+            "service_id": 555,
+            "mode": "kUDP|kIPC",
+            "port": 1555,
+            "platform": "engine_computer",
+            "methods": [
+            ],
+            "events": [
+                {
+                    "name": "sentTempEvent_1",
+                    "id": 33015
+                },
+                {
+                    "name": "sentTempEvent_2",
+                    "id": 33016
+                },
+                {
+                    "name": "sentTempEvent_3",
+                    "id": 33017
+                }
+            ],
+            "req_methods": []
+        }
+    }
+}

@@ -10,6 +10,7 @@ filegroup(
         "//deployment/apps/prim_service:app_config",
         "//deployment/apps/servo_service:app_config",
         "//deployment/apps/example2/example:app_config",
+        "//deployment/apps/jaku_service:app_config",
     ],
     visibility = ["//deployment:__subpackages__"],
 )
