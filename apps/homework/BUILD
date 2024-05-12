@@ -1,7 +1,8 @@
 load("//deployment/bazel:srp_component.bzl", "srp_component")
+
 srp_component(
     name = "homework",
-    bin = "//apps/homework",
+    bin = "//apps/homework:homework",
     configs = [
         ":app_config"
     ],
