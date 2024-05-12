@@ -1,4 +1,4 @@
-load("//deployment/bazel:flash_ecu.bzl", "flash_ecu")
+load("//deployment/bazel:flash_ecu.bzl", "flash_ecu","flash_sim_ecu")
 
 flash_ecu(
     name = "flash_ec",
@@ -14,7 +14,7 @@ flash_ecu(
     user_name = "root",
 )
 
-flash_ecu(
+flash_sim_ecu(
     name = "flash_ec_sym",
     file = ["//deployment/cpu/ec:pkg"],
     ip = "192.168.11.2",

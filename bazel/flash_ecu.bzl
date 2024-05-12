@@ -30,3 +30,18 @@ flash_ecu = rule(
         ),
     },
 )
+
+flash_sim_ecu = rule(
+    implementation = _impl,
+    attrs = {
+        "file": attr.label_list(mandatory = False, allow_files = True),
+        "ip": attr.string(),
+        "user_name": attr.string(),
+        "tool": attr.label(
+            executable = True,
+            cfg = "exec",
+            allow_files = True,
+            default = Label("//deployment/bazel:sim_flash"),
+        ),
+    },
+)

@@ -15,3 +15,9 @@ sh_binary(
     srcs = ["connect_tar.sh"],
     visibility = ["//visibility:public"],
 )
+
+sh_binary(
+    name = "sim_flash",
+    srcs = ["sim_flash.sh"],
+    visibility = ["//visibility:public"],
+)
