@@ -30,7 +30,9 @@
                     "id": 33017
                 }
             ],
-            "req_methods": []
+            "req_methods": [
+                "HomeworkApp/diodeMethod as diodeMethod"
+            ]
         }
     }
 }
