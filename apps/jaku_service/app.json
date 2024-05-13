@@ -31,7 +31,7 @@
                 }
             ],
             "req_methods": [
-                
+                "HomeworkApp/diodeMethod as diodeMethod"
             ]
         }
     }
