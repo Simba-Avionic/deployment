@@ -4,7 +4,7 @@
         "bootMode": 1,
         "app_id": 555,
         "logger": {
-            "app_id": "ENVA",
+            "app_id": "JAKU",
             "app_des": "jaku apka cos tam wysyla",
             "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
@@ -31,7 +31,7 @@
                 }
             ],
             "req_methods": [
-                "HomeworkApp/diodeMethod as diodeMethod"
+                
             ]
         }
     }
