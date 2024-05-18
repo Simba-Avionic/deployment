@@ -1,0 +1,8 @@
+{
+    "platform":{
+        "name":"engine_computer",
+        "ip":"192.168.11.102",
+        "mask": "255.255.255.0",
+        "interface_name" : "enp0s3"
+    }
+}

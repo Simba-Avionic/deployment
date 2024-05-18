@@ -8,9 +8,7 @@ srp_component(
     add_configs = [
     "config.json",
     ],
-    visibility = [
-        "//deployment/cpu:__subpackages__",
-        "//mw/logger/dlt_fc/ec_sim:__subpackages__"]
+    visibility = ["//deployment/cpu:__subpackages__"],
 )
 filegroup(
     name = "config",
