@@ -1,9 +1,8 @@
 filegroup(
     name = "CPU_configs",
     srcs = [
-        "//deployment/cpu/ec:config",
-        "//deployment/cpu/pc:config",
-        "//deployment/cpu/fc:config",
+        "//deployment/cpu/ec_sim:config",
+        "//deployment/cpu/fc_sim:config"
     ],
     visibility = ["//deployment:__subpackages__"],
 )

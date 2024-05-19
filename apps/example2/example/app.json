@@ -4,7 +4,7 @@
         "bootMode":0,
         "app_id":16,
         "logger":{
-            "app_id": "EXAM",
+            "app_id": "EXA2",
             "app_des": "Przykladowa Aplikacja",
             "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
