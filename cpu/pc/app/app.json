@@ -12,7 +12,7 @@
         "someip": {
             "service_id": 1,
             "mode": "kUDP",
-            "port": 1001,
+            "port": 10001,
             "platform": "pc_dev",
             "methods": [],
             "events": [],
