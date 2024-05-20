@@ -1,0 +1,33 @@
+{
+    "app": {
+        "name":"HomeworkApp",
+        "bootMode":0,
+        "app_id":666,
+        "logger":{
+            "app_id": "HOME",
+            "app_des": "Przykladowa Aplikacja",
+            "log_level": "kInfo",
+            "log_mode": "kConsole|kDLT"
+        },
+        "someip":{
+            "service_id":666,
+            "mode":"kUDP|kIPC",
+            "port":1666,
+            "platform": "engine_computer",
+            "methods":[
+                {
+                    "name":"diodeMethod",
+                    "id":1,
+                    "access_list":["JakuApp"]
+                }
+            ],
+            "events":[
+            ],
+            "req_events": [
+                "JakuApp/sentTempEvent_1 as temp1",
+                "JakuApp/sentTempEvent_2 as temp2",
+                "JakuApp/sentTempEvent_3 as temp3"
+            ]
+        }
+    }
+}

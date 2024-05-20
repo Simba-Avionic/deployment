@@ -6,6 +6,7 @@ cpu_def(
     srp_components = [
         "//deployment/mw/loger/dlt_fc:dlt_server",
         "//deployment/apps/example",
+        "//deployment/apps/homework",
         "//deployment/mw/em",
         "//deployment/mw/gpio",
         "//deployment/mw/temp:temp_service",
