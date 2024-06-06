@@ -34,12 +34,16 @@
                     "id": 32772
                 },
                 {
-                    "name": "newPressEvent",
+                    "name": "newTankPressEvent",
                     "id": 32773
                 },
                 {
                     "name": "newDPressEvent",
                     "id": 32774
+                },
+                {
+                    "name": "newNozlePressEvent",
+                    "id": 32775
                 }
             ],
             "req_methods": []
