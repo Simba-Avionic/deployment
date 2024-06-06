@@ -2,7 +2,7 @@
     "app": {
         "app_id":260,
         "name": "I2CServer",
-        "bootMode": 10,
+        "bootMode": 9,
         "logger": {
             "app_id": "I2C-",
             "app_des": "I2C server",
