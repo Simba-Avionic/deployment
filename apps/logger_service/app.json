@@ -36,7 +36,7 @@
                 "EnvApp/newTempEvent_3 as Temp_Event_3",
                 "EnvApp/newTempEvent_4",
                 "EnvApp/newTankPressEvent as tank_press_event",
-                "EnvApp/newTankPressEvent as nozle_press_event",
+                "EnvApp/newNozlePressEvent as nozle_press_event",
                 "EnvApp/newDPressEvent as d_press_event"
             ]
         }
