@@ -1,4 +1,9 @@
 {
+    "include": [
+        "deployment/system_definition/diag/jobs/read_vin.json",
+        "deployment/system_definition/diag/jobs/start_rid.json",
+        "deployment/system_definition/diag/jobs/hard_restart.json"
+    ],
     "app": {
         "name": "EC_DiagOtaApp",
         "bootMode": 0,
@@ -49,7 +54,14 @@
             "req_methods": []
         },
         "diag": {
-            "service_id": 513
+            "provide": [
+                "read_vin as vin",
+                "start_rid as start",
+                "hard_reset"
+            ],
+            "require":[
+                "start_rid as r_start"
+            ]
         }
     }
 }
