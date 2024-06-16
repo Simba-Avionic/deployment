@@ -2,7 +2,7 @@ load("//deployment/bazel:srp_component.bzl", "srp_component")
 
 srp_component(
     name = "servoService",
-    bin = "//services/ServoService",
+    bin = "//apps/ServoService",
     configs = [
         ":app_config"
     ],

@@ -2,5 +2,5 @@
     "app_id": "DLTS",
     "app_des": "DLT server",
     "log_level": "kInfo",
-    "log_mode": "kConsole|kFile"
+    "log_mode": "kFile"
 }
