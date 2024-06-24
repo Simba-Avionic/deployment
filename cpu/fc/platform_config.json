@@ -1,8 +1,15 @@
 {
     "platform":{
         "name":"flight_computer",
+        "sname":"FC",
         "ip":"192.168.10.102",
         "mask": "255.255.255.0",
-        "interface_name" : "eth0"
+        "interface_name" : "eth0",
+        "ecu_id":4280998305,
+        "eng_token":268549035,
+        "plant-token": 268500992,
+        "current_mode": 268500992,
+        "logic_address": 11,
+        "vin": "SIMBA_R7_FC_BB"
     }
 }

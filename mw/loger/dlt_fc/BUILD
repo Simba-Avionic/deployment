@@ -6,12 +6,17 @@ srp_component(
         ":config",
     ],
     add_configs = [
-    "config.json",
+    "//deployment/mw/loger/dlt_fc:temp_configs",
     ],
     visibility = ["//deployment/cpu:__subpackages__"],
 )
 filegroup(
     name = "config",
     srcs = ["app.json"],
+    visibility = ["//deployment/mw:__subpackages__"],
+)
+filegroup(
+    name = "temp_configs",
+    srcs = ["config.json"],
     visibility = ["//deployment/mw:__subpackages__"],
 )

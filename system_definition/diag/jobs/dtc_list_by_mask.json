@@ -1,0 +1,14 @@
+{
+    "include": [
+        "deployment/system_definition/diag/global/dtc.json"
+    ],
+    "diag": {
+        "job": {
+            "dtc_list_by_mask": {
+                "type": "dtc_service",
+                "sub_service_id": 2,
+                "desc":"Read dtc by mask"
+            }
+        }
+    }
+}

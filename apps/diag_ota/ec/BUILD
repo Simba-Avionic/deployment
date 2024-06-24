@@ -3,8 +3,7 @@ load("//deployment/bazel:srp_component.bzl", "srp_component")
 srp_component(
     name = "diag_ota",
     add_configs = [
-        "config.json",
-        "//libdoip/examples:example_server",
+        "//deployment/apps/diag_ota/ec:add_configs",
     ],
     bin = "//apps/diag_ota/code:diag_ota",
     configs = [
@@ -17,7 +16,10 @@ srp_component(
     ],
     visibility = ["//deployment/cpu:__subpackages__"],
 )
-
+filegroup(
+    name = "add_configs",
+    srcs = ["config.json"],
+)
 filegroup(
     name = "app_config",
     srcs = ["app.json"],

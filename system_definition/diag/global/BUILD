@@ -3,7 +3,8 @@ filegroup(
     srcs = [
         "did.json",
         "rid.json",
-        "restart.json"
+        "restart.json",
+        "dtc.json"
     ],
     visibility = ["//visibility:public"],
 )

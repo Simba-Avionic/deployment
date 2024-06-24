@@ -1,8 +1,9 @@
 
 class diag_job:
-    def __init__(self,s_id_list,sub_id) -> None:
+    def __init__(self,s_id_list,sub_id,desc="") -> None:
         self.s_id_list = s_id_list
         self.sub_id = sub_id
+        self.desc = desc
         pass
 
 class diag_job_global:

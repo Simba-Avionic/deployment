@@ -1,0 +1,14 @@
+{
+    "include": [
+        "deployment/system_definition/diag/global/dtc.json"
+    ],
+    "diag": {
+        "job": {
+            "dtc_snapshot": {
+                "type": "dtc_service",
+                "sub_service_id": 4,
+                "desc":"Read dtc snapshot"
+            }
+        }
+    }
+}

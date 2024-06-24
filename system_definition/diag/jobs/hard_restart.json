@@ -6,7 +6,8 @@
         "job": {
             "hard_reset": {
                 "type": "restart",
-                "sub_service_id": 1
+                "sub_service_id": 1,
+                "desc":"ECU hard reset"
             }
         }
     }

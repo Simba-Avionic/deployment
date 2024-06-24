@@ -24,3 +24,14 @@ filegroup(
     ],
     visibility = ["//visibility:public"],
 )
+
+filegroup(
+    name = "dtc_jobs",
+    srcs = [
+        "dtc_list.json",
+        "dtc_list_by_mask.json",
+        "dtc_snapshot.json",
+        "//deployment/system_definition/diag/global:diag_dids",
+    ],
+    visibility = ["//visibility:public"],
+)

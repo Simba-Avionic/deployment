@@ -6,7 +6,8 @@
         "job": {
             "start_rid": {
                 "type": "rid",
-                "sub_service_id": 4384
+                "sub_service_id": 4384,
+                "desc":"Some RID"
             }
         }
     }

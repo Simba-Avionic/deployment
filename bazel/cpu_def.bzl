@@ -1,24 +1,6 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("//deployment/bazel:connect_tar.bzl", "connect_tar")
-
-def _netinterface_script(ctx):
-    json_data = json.decode(ctx.apis.read(ctx.files.configs[0].path))
-    content = """ 
-#!/bin/sh
-################################################################################
-#
-#   Copyright (c) 2024 Bartosz Snieg.
-#
-################################################################################
-#
-echo "Setting interface: """ + json_data.encode("interface_name") + """ for """ + json_data.encode("name")  + """ "
-echo "ip: """ + json_data.encode("ip") + """"
-echo "net mask """ + json_data.encode("mask") + """ "
-ifconfig """ + json_data.encode("interface_name") + """ """ + json_data.encode("ip") + """ netmask """ + json_data.encode("mask") + """
-echo "Interface set [DONE]"
-    """
-    return content
-
+load("//deployment/bazel:json_megre.bzl","json_megre")
 def convert(path):
     res = path.split("/")[-1].replace(".tar", "")
     return res
@@ -90,7 +72,17 @@ cpu_def_r = rule(
     },
 )
 
-def cpu_def(name, srp_components,config):
+def cpu_def(name, srp_components,config, memory_structure =[]):
+    configs = []
+    for l in srp_components:
+        # print(l)
+        if ":" in l:
+            configs.append(l+"_configs")
+        else:
+            temp = l.split("/")
+            configs.append(l+":"+temp[-1].replace("/","")+"_configs")
+
+    
     cpu_def_r(
         name = "cpu",
         configs = [config],
@@ -101,6 +93,16 @@ def cpu_def(name, srp_components,config):
         srcs = [":cpu"],
         visibility = ["//visibility:private"],
     )
+
+    json_megre(
+        name=name+"_config",
+        files = configs+[config],
+        visibility=["//visibility:public"]
+    )
+    # native.filegroup(
+    #     name=name+"_components_config",
+    #     srcs=configs,
+    # )
 
     connect_tar(
             name = name,

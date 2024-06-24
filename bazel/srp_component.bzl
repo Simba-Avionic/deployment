@@ -1,7 +1,7 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("//deployment/bazel:config_gen.bzl", "config_gen")
 load("//deployment/bazel:connect_tar.bzl", "connect_tar")
-
+load("//deployment/bazel:diag_config_connector.bzl", "diag_config_connector")
 def _impl(ctx):
     # The list of arguments we pass to the script.
     out = ctx.actions.declare_file(ctx.attr.out_name)
@@ -67,11 +67,24 @@ def srp_component(name, bin, configs = [],add_configs = [], visibility = [], inc
         ],
         visibility = visibility,
     )
-
+    native.alias(
+        name = name+"_configs",
+        actual = "_configs_temp",
+        visibility = ["//visibility:public"],
+    )
+    native.filegroup(
+        name="_configs_temp",
+        srcs=["diag_connect"]
+    )
     config_gen(
         name = "_app_config",
         config_src = configs,
         component_name = name,
         includes = ["//deployment:Apps"],
         includes_diag = includes_diag,
+    )
+
+    diag_config_connector(
+        name="diag_connect",
+        files = includes_diag+configs,
     )

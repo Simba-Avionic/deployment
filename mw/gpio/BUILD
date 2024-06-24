@@ -7,7 +7,7 @@ srp_component(
         ":config",
     ],
     add_configs = [
-        "config.json",
+        "//deployment/mw/gpio:configs"
     ],
     visibility = ["//deployment/cpu:__subpackages__"],
 )
@@ -17,4 +17,9 @@ filegroup(
         "app.json",
         ],
     visibility = ["//deployment/mw:__subpackages__"],
+)
+filegroup(
+    name = "configs",
+    srcs = ["config.json"],
+    visibility = ["//visibility:public"],
 )

@@ -1,4 +1,9 @@
 {
+    "include": [
+        "deployment/system_definition/diag/jobs/dtc_snapshot.json",
+        "deployment/system_definition/diag/jobs/dtc_list.json",
+        "deployment/system_definition/diag/jobs/dtc_list_by_mask.json"
+    ],
     "app": {
         "name": "DtcService",
         "app_id":257,
@@ -9,6 +14,13 @@
             "app_des": "DTC service",
             "log_level": "kInfo",
             "log_mode": "kConsole|kDLT"
+        },
+        "diag": {
+            "provide": [
+                "dtc_list_by_mask as DtcByMask",
+                "dtc_list as DtcList",
+                "dtc_snapshot"
+            ]
         }
     }
 }
