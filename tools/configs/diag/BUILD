@@ -1,6 +1,7 @@
 py_library(
     name = "diag_jobs",
     srcs = ["diag_job.py"],
+    visibility = ["//visibility:public"],
 )
 
 py_binary(

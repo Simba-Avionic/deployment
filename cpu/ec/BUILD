@@ -13,7 +13,7 @@ cpu_def(
         "//deployment/apps/prim_service",
         "//deployment/apps/diag_ota/ec:diag_ota",
         "//deployment/apps/servo_service:servoService",
-        # "//deployment/mw/diag/dtc:dtc_service",
+        "//deployment/mw/diag/dtc:dtc_service",
         "//deployment/mw/i2c:i2c_service",
     ],
 )
