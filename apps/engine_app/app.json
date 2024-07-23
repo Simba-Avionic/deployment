@@ -40,7 +40,7 @@
                 "EC_DiagOtaApp/newDTCEvent",
                 "ServoApp/servoStatusEvent",
                 "ServoApp/servoVentStatusEvent",
-                "EnvApp/newPressEvent",
+                "EnvApp/newTankPressEvent",
                 "PrimerApp/primeStatusEvent"
             ]
         }

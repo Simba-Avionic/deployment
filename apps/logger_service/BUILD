@@ -1,3 +1,12 @@
+load("//deployment/bazel:srp_component.bzl", "srp_component")
+srp_component(
+    name = "logger_service",
+    bin = "//apps/logger_service",
+    configs = [
+        ":app_config"
+    ],
+    visibility = ["//deployment/cpu:__subpackages__"],
+)
 
 
 filegroup(
