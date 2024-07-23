@@ -4,7 +4,7 @@ def _impl(ctx):
     user = ctx.attr.user_name+"@"+ctx.attr.ip
     out = ctx.actions.declare_file("log.txt")
     args = [out.path, user, ctx.files.file[0].path, ctx.files.file[0].basename.replace(".tar","")]
-    
+
     # Action to call the script.
     ctx.actions.run(
         inputs = ctx.files.file,
@@ -26,7 +26,7 @@ docker_flash_ecu = rule(
             executable = True,
             cfg = "exec",
             allow_files = True,
-            default = Label("//deployment/bazel:_docker_flash_sh"),
+            default = Label("//deployment/bazel:docker_flash_sh"),
         ),
-    },
+    }
 )

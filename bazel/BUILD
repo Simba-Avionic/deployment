@@ -10,7 +10,7 @@ sh_binary(
     visibility = ["//visibility:public"],
 )
 sh_binary(
-    name = "_docker_flash_sh",
+    name = "docker_flash_sh",
     srcs = ["docker_flash.sh"],
     visibility = ["//visibility:public"],
 )
