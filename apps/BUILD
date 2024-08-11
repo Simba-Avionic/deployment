@@ -1,8 +1,6 @@
 filegroup(
     name = "Apps",
     srcs = [
-        "//deployment/apps/diag_ota/ec:app_config",
-        "//deployment/apps/diag_ota/fc:app_config",
         "//deployment/apps/engine_app:app_config",
         "//deployment/apps/env_service:app_config",
         "//deployment/apps/example:app_config",

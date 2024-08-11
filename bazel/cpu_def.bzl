@@ -33,6 +33,7 @@ def _start_service_script(ctx):
 ################################################################################
 #
 echo "Starting components SRP EM "
+sleep 5
 /opt/em/bin/em &
 echo "Simab SRP start up component script [DONE]"
 """
@@ -50,7 +51,7 @@ def _startup_script(ctx):
 echo "Simab SRP start up script"
 
 /opt/cpu_simba/network_interface.sh
-/opt/cpu_simba/component_start_up.sh
+/opt/cpu_simba/component_start_up.sh &
 
 echo "Simab SRP start up script [DONE]"
 
@@ -90,7 +91,7 @@ cpu_def_r = rule(
     },
 )
 
-def cpu_def(name, srp_components,config):
+def cpu_def(name, srp_components,config,etcs = []):
     cpu_def_r(
         name = "cpu",
         configs = [config],
@@ -98,7 +99,7 @@ def cpu_def(name, srp_components,config):
     pkg_tar(
         name = "config_pkg",
         package_dir = "opt/cpu_simba",
-        srcs = [":cpu"],
+        srcs = [":cpu"]+etcs,
         visibility = ["//visibility:private"],
     )
 
