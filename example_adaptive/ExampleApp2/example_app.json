@@ -7,13 +7,13 @@
     ],
     "package": "simba.example",
     "adaptive_application": {
-        "ExampleApp": {
+        "ExampleApp2": {
             "app": {
                 "bootMode": 0,
                 "parms": "-t -10- 100",
                 "logger": {
-                    "app_id": "EXAA",
-                    "app_des": "Example Adaptive application",
+                    "app_id": "EXA2",
+                    "app_des": "Example Adaptive application 2",
                     "log_level": "kInfo",
                     "log_mode": "kRemote",
                     "ctx": [
@@ -41,24 +41,12 @@
                 }
             },
             "provide": [
-                {
-                    "name": "ExampleService as service",
-                    "on": "udp",
-                    "port": "1011",
-                    "instance": 1
-                },
+            ],
+            "require": [
                 {
                     "name": "ExampleService as service2",
                     "on": "ipc",
                     "instance": 2
-                },
-                {
-                    "name": "read_vin as UDSReadVin",
-                    "on": "diag"
-                },
-                {
-                    "name": "example_dtc_hex as dtcMonitor1",
-                    "on": "monitor"
                 }
             ]
         }

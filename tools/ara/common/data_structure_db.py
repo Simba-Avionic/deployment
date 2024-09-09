@@ -32,6 +32,8 @@ class DataStructureDB(metaclass=SingletonMeta):
             return Bool(name)
         elif v_type == "string":
             return String(name)
+        elif v_type == "void":
+            return Void(name)
         else:
             if package+"."+v_type in self.data_structure:
                 return self.data_structure[package+"."+v_type]

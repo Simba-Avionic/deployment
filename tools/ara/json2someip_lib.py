@@ -6,6 +6,8 @@ import json
 from deployment.tools.ara.common.common_parser import CommonParser
 from deployment.tools.ara.app.adaptive_application_db import AdaptiveApplicationDb
 from deployment.tools.ara.app.adaptive_application_extractor import AdaptiveApplicationExtractor
+from deployment.tools.ara.common.data_structure_extractor import *
+from deployment.tools.ara.someip.lib.someip_extractor import SomeipExtractor
 from deployment.tools.ara.common.data_structure import data_type
 from deployment.tools.ara.someip.lib.someip_db import *
 def LoadJson(path:str):
@@ -17,7 +19,11 @@ def CreateDir(start:str,finish:str):
                 os.makedirs(start)
             except:
                 pass
-
+def ExtractStructList(struct_list: dict[str,data_type],s:data_type):
+    struct_list[s.name] = s
+    for key,d in s.variable_list.items():
+        if d.typ_str == "struct":
+            ExtractStructList(struct_list,d)
 if __name__ == "__main__":
     out_path = sys.argv[1]
     src_path = ""
@@ -42,22 +48,51 @@ if __name__ == "__main__":
         struct_list: dict[str,data_type] = {}
         for k,s in app.provide_someip.items():
             if s.item.name not in service_list:
-                service_list[s.item.name] = s.item
                 CreateDir(copy.copy(out_path),s.item.name.replace(".","/"))
+                service_list[s.item.name] = s.item
+                service_list[s.item.name].dir = "kOut"
+                CreateDir(copy.copy(out_path),s.item.name.replace(".","/").replace("/"+s.item.name.split(".")[-1],""))
                 for m in s.item.methods:
                     if m.in_parm.typ_str == "struct":
                         if m.in_parm.name not in struct_list:
-                            struct_list[m.in_parm.name] = m.in_parm
+                            ExtractStructList(struct_list,m.in_parm)
+                            # struct_list[m.in_parm.name] = m.in_parm
+                            CreateDir(copy.copy(out_path),m.in_parm.name.replace(".","/").replace("/"+m.in_parm.name.split(".")[-1],""))
                     if m.out_parm.typ_str == "struct":
                         if m.out_parm.name not in struct_list:
-                            struct_list[m.out_parm.name] = m.out_parm
-                            CreateDir(copy.copy(out_path),m.out_parm.name.replace(".","/"))
+                            ExtractStructList(struct_list,m.out_parm)
+                            CreateDir(copy.copy(out_path),m.out_parm.name.replace(".","/").replace("/"+m.out_parm.name.split(".")[-1],""))
                 for m in s.item.events:
                     if m.out_parm.typ_str == "struct":
                         if m.out_parm.name not in struct_list:
-                            struct_list[m.out_parm.name] = m.out_parm
-                            CreateDir(copy.copy(out_path),m.out_parm.name.replace(".","/"))
-        
-        
+                            ExtractStructList(struct_list,m.out_parm)
+                            CreateDir(copy.copy(out_path),m.out_parm.name.replace(".","/").replace("/"+m.out_parm.name.split(".")[-1],""))
+        for k,s in app.require_someip.items():
+            if s.item.name not in service_list:
+                CreateDir(copy.copy(out_path),s.item.name.replace(".","/"))
+                service_list[s.item.name] = s.item
+                service_list[s.item.name].dir = "kIn"
+                CreateDir(copy.copy(out_path),s.item.name.replace(".","/").replace("/"+s.item.name.split(".")[-1],""))
+                for m in s.item.methods:
+                    if m.in_parm.typ_str == "struct":
+                        if m.in_parm.name not in struct_list:
+                            ExtractStructList(struct_list,m.in_parm)
+                            # struct_list[m.in_parm.name] = m.in_parm
+                            CreateDir(copy.copy(out_path),m.in_parm.name.replace(".","/").replace("/"+m.in_parm.name.split(".")[-1],""))
+                    if m.out_parm.typ_str == "struct":
+                        if m.out_parm.name not in struct_list:
+                            ExtractStructList(struct_list,m.out_parm)
+                            CreateDir(copy.copy(out_path),m.out_parm.name.replace(".","/").replace("/"+m.out_parm.name.split(".")[-1],""))
+                for m in s.item.events:
+                    if m.out_parm.typ_str == "struct":
+                        if m.out_parm.name not in struct_list:
+                            ExtractStructList(struct_list,m.out_parm)
+                            CreateDir(copy.copy(out_path),m.out_parm.name.replace(".","/").replace("/"+m.out_parm.name.split(".")[-1],""))
+        for k,v in service_list.items():
+            print(k)
+        for k,v in struct_list.items():
+            DataStructureExtractor.ExtractStructure(out_path,v)
+        for k,v in service_list.items():
+            SomeipExtractor.ExtractService(out_path,v)
     else:
         raise Exception("Adaptive app def not found!")

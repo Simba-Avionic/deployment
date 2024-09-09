@@ -20,6 +20,7 @@ cpu_def(
         # # "//deployment/mw/diag/dtc:dtc_service",
         # "//deployment/mw/i2c:i2c_service",
         "//deployment/example_adaptive/ExampleApp",
+        "//deployment/example_adaptive/ExampleApp2",
         "//deployment/platform/em",
         "//deployment/platform/logger",
         "//deployment/platform/diag_demon",

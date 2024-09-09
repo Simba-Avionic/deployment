@@ -5,6 +5,7 @@ py_library(
     srcs = [
         "service.py",
         "someip_db.py",
+        "someip_extractor.py",
         "someip_parser.py",
         "someip_runtime_env.py",
     ],

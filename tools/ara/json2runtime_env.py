@@ -63,6 +63,7 @@ Result<void> Deinitialize() noexcept {
   ara_stop_source_.request_stop();
   const auto ara_logger_ = log::LoggingMenager::GetInstance()->CreateLogger("ara-");
   ara_logger_.LogInfo() << "ARA environment has been deinitialized";
+  
   return {}; 
 }
 
