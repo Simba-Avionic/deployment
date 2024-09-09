@@ -3,11 +3,12 @@ from deployment.tools.ara.diag.diag_db import *
 from deployment.tools.ara.someip.lib.someip_db import *
 
 class SomeipItem:
-    def __init__(self,on:str,port:str,instance:int, item:Service) -> None:
+    def __init__(self,on:str,port:str,instance:int, item:Service, dir:str) -> None:
         self.on =on
         self.port = port
         self.instance = instance
         self.item = item
+        self.dir = dir
         
 class DtcItem:
     def __init__(self, item:diag_dtc) -> None:
@@ -95,6 +96,7 @@ class AdaptiveApplication:
         self.provide_someip: dict[str,SomeipItem] = {}
         self.provide_uds: dict[str, UdsItem] = {}
         self.provide_dtc: dict[str, DtcItem] = {}
+        self.require_someip: dict[str,SomeipItem] = {}
     def GetDtcList(self) -> dict[str,diag_dtc]:
         res = {}
         for key,val in self.provide_dtc.items():
@@ -108,4 +110,4 @@ class AdaptiveApplication:
         
         return res
     def GetServiceList(self) -> dict[str,SomeipItem]:
-        return self.provide_someip
+        return {**self.provide_someip ,**self.require_someip}

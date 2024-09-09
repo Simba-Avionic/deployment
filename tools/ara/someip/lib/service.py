@@ -26,4 +26,4 @@ class Service:
         self.package:str = ""
         self.methods:list[Method] = []
         self.events:list[Event] = []
-        
+        self.dir = "None"

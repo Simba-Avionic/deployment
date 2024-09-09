@@ -7,17 +7,21 @@ class SomeipRuntimeEnv:
 Result<void> InitializeComDb(ModelDataBase& db_) noexcept {
 """
         for key,item in service_list.items():
-            if item.on.lower() == "ipc":
+            res+="""
+    {"""
+            if item.dir == "kOut":
                 res+="""
-    {
-        const auto res = ara::core::model::ModelSomeIp::CreatItem(\"/someip_ipc_"""+str(item.item.id)+"""_"""+str(item.instance)+"""\",0,"""+str(item.instance)+"""U,"""+str(item.item.major)+"""U,"""+str(item.item.minor)+"""U);
+        const auto res = ara::core::model::ModelSomeIp::CreatSkeletonItem("""
+            else:
+                res+="""
+        const auto res = ara::core::model::ModelSomeIp::CreatProxyItem("""
+            if item.on.lower() == "ipc":
+                res+="""\"someip_ipc_"""+str(item.item.id)+"""_"""+str(item.instance)+"""\",0,"""+str(item.instance)+"""U,"""+str(item.item.major)+"""U,"""+str(item.item.minor)+"""U);
         std::ignore = db_.AddNewItem(\""""+app_name+"/"+key+"""\", {res.Value()});
     }
             """
             elif item.on.lower() == "udp":
-                res+="""
-    {
-        const auto res = ara::core::model::ModelSomeIp::CreatItem(\"0.0.0.0\","""+item.port+""","""+str(item.instance)+"""U,"""+str(item.item.major)+"""U,"""+str(item.item.minor)+"""U);
+                res+="""\"0.0.0.0\","""+item.port+""","""+str(item.instance)+"""U,"""+str(item.item.major)+"""U,"""+str(item.item.minor)+"""U);
         std::ignore = db_.AddNewItem(\""""+app_name+"/"+key+"""\", {res.Value()});
     }
             """

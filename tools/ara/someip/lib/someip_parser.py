@@ -51,7 +51,7 @@ class SomeIpParser:
         return res
 
     def ExportMethod(name:str,package:str,json_object,db_:SomeIpDb) -> Method:
-        input_parm = DataStructureDB().CreateVariable(json_object["data_structure"]["in"]["name"],package,json_object["data_structure"]["in"]["type"])
+        input_parm = DataStructureDB().CreateVariable("in_parm",package,json_object["data_structure"]["in"]["type"])
         output_parm = DataStructureDB().CreateVariable("out",package,json_object["data_structure"]["out"]["type"])
         return Method(name,json_object["id"],input_parm,output_parm)
     

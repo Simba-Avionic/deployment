@@ -31,7 +31,7 @@ class AdaptiveApplicationParser:
                     port = ""
                     if "port" in item:
                         port = item["port"]
-                    temp_app.provide_someip[t_name] = SomeipItem(item["on"],port,item["instance"],SomeIpDb().FindService(orginal_name,package))
+                    temp_app.provide_someip[t_name] = SomeipItem(item["on"],port,item["instance"],SomeIpDb().FindService(orginal_name,package),"kOut")
                
                elif item["on"] == "diag":
                     t_name:str = item["name"]
@@ -54,7 +54,46 @@ class AdaptiveApplicationParser:
                     print (orginal_name+" -> "+t_name)
                     assert t_name not in temp_app.provide_dtc
                     temp_app.provide_dtc[t_name] = DtcItem(DiagDb().FindDtc(orginal_name,package))
+              
+              
+        if "require" in json_object[s_name]:
+            for item in json_object[s_name]["require"]:
+               if item["on"] == "ipc" or  item["on"] == "udp":
+                    t_name:str = item["name"]
+                    orginal_name = t_name
+                    if "as" in t_name:
+                       temp = t_name.split(" as ")
+                       orginal_name = temp[0]
+                       t_name = temp[1]
+                    print (orginal_name+" -> "+t_name)
+                    assert t_name not in temp_app.provide_someip
+                    port = ""
+                    if "port" in item:
+                        port = item["port"]
+                    temp_app.require_someip[t_name] = SomeipItem(item["on"],port,item["instance"],SomeIpDb().FindService(orginal_name,package),"kIn")
+               
+            #    elif item["on"] == "diag":
+            #         t_name:str = item["name"]
+            #         orginal_name = t_name
+            #         if "as" in t_name:
+            #            temp = t_name.split(" as ")
+            #            orginal_name = temp[0]
+            #            t_name = temp[1]
+            #         print (orginal_name+" -> "+t_name)
+            #         assert t_name not in temp_app.provide_uds
+            #         temp_app.provide_uds[t_name] = UdsItem(DiagDb().FindJob(orginal_name,package))
                     
+            #    elif item["on"] == "monitor":
+            #         t_name:str = item["name"]
+            #         orginal_name = t_name
+            #         if "as" in t_name:
+            #            temp = t_name.split(" as ")
+            #            orginal_name = temp[0]
+            #            t_name = temp[1]
+            #         print (orginal_name+" -> "+t_name)
+            #         assert t_name not in temp_app.provide_dtc
+            #         temp_app.provide_dtc[t_name] = DtcItem(DiagDb().FindDtc(orginal_name,package))   
+   
         AdaptiveApplicationDb().app_list[name] = temp_app
         
     def ParseLogger(json_object) -> LogerConfig:

@@ -21,7 +21,7 @@
                 }
             },
             "events":{
-                "StatusEvent":{
+                "Status":{
                     "id":32769,
                     "data_structure":{
                         "out":{

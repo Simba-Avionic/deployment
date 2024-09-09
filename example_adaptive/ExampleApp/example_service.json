@@ -3,29 +3,50 @@
     "package":"simba.example",
     "someip":{
         "ExampleService":{
-            "service_id":1,
+            "service_id":100,
             "major_version":1,
             "minor_version":0,
             "methods":{
-                "SetStatus":{
-                    "id":1,
+                "SetStatus3":{
+                    "id":3,
                     "data_structure":{
                         "in":{
-                            "name":"parm_1",
-                            "type":"ExampleDataStructure"
+                            "type":"void"
                         },
                         "out":{
                             "type":"bool"
                         }
                     }
+                },
+                "SetStatus4":{
+                    "id":4,
+                    "data_structure":{
+                        "in":{
+                            "type":"void"
+                        },
+                        "out":{
+                            "type":"ExampleDataStructure"
+                        }
+                    }
+                },
+                "SetStatus5":{
+                    "id":5,
+                    "data_structure":{
+                        "in":{
+                            "type":"void"
+                        },
+                        "out":{
+                            "type":"void"
+                        }
+                    }
                 }
             },
             "events":{
-                "StatusEvent":{
+                "Status":{
                     "id":32769,
                     "data_structure":{
                         "out":{
-                            "type":"ExampleDataStructure"
+                            "type":"uint8"
                         }
                     }
                 }
