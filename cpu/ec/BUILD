@@ -19,6 +19,7 @@ cpu_def(
         # "//deployment/apps/servo_service:servoService",
         # # "//deployment/mw/diag/dtc:dtc_service",
         # "//deployment/mw/i2c:i2c_service",
+        "//deployment/apps/servo_service:servoService",
         "//deployment/example_adaptive/ExampleApp",
         "//deployment/platform/em",
         "//deployment/platform/logger",

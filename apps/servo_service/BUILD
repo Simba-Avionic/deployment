@@ -17,3 +17,23 @@
 #     srcs = ["app.json"],
 #     visibility = ["//deployment/apps:__subpackages__"],
 # )
+
+load("//deployment/tools/ara:adaptive_application.bzl", "adaptive_application")
+
+filegroup(
+    name = "instance",
+    srcs = [
+        "app_config.json",
+        "//deployment/system_definition/diag/jobs:servo_status_job",
+    ],
+    visibility = ["//apps/ServoService:__subpackages__"],
+)
+
+adaptive_application(
+    name = "servoService",
+    bin = "//apps/ServoService",
+    model_src = ["//deployment/apps/servo_service:instance"],
+    etcs = ["config.json"],
+    visibility = ["//visibility:public"],
+)
+
