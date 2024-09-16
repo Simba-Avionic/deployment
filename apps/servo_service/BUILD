@@ -25,6 +25,7 @@ filegroup(
     srcs = [
         "app_config.json",
         "//deployment/system_definition/diag/jobs:servo_status_job",
+        "//deployment/system_definition/diag/jobs:vent_servo_status_job",
     ],
     visibility = ["//apps/ServoService:__subpackages__"],
 )

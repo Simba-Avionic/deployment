@@ -1,17 +1,15 @@
 {
     "include": [
-        "deployment/system_definition/diag/jobs/servo_status_did.json",
-        "deployment/system_definition/diag/jobs/vent_servo_status_did.json"
     ],
-    "package": "simba.apps",
+    "package": "simba.mw",
     "adaptive_application": {
-        "servoService": {
+        "i2cMWService": {
             "app": {
-                "bootMode": 9,
+                "bootMode": 6,
                 "parms": "",
                 "logger": {
-                    "app_id": "SERV",
-                    "app_des": "Serwis od servo",
+                    "app_id": "I2C-",
+                    "app_des": "I2C server",
                     "log_level": "kInfo",
                     "log_mode": "kConsole|kRemote",
                     "ctx": [
@@ -39,14 +37,6 @@
                 }
             },
             "provide": [
-                {
-                    "name": "MainServoStatusDiD as MainServoStatus",
-                    "on": "diag"
-                },
-                {
-                    "name": "VentServoStatusDiD as VentServoStatus",
-                    "on": "diag"
-                }
             ]
         }
     }

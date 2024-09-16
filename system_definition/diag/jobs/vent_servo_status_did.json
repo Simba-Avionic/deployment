@@ -4,9 +4,9 @@
     ],
     "diag": {
         "job": {
-            "MainServoStatusDiD": {
+            "VentServoStatusDiD": {
                 "type": "did",
-                "sub_service_id": 10
+                "sub_service_id": 11
             }
         }
     }

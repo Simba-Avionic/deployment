@@ -18,3 +18,21 @@
 #         ],
 #     visibility = ["//deployment/mw:__subpackages__"],
 # )
+
+load("//deployment/tools/ara:adaptive_application.bzl", "adaptive_application")
+
+filegroup(
+    name = "instance",
+    srcs = [
+        "app_config.json",
+    ],
+    visibility = ["//mw/gpio_server:__subpackages__"],
+)
+
+adaptive_application(
+    name = "gpio_service",
+    bin = "//mw/gpio_server:gpio_service",
+    model_src = ["//deployment/mw/gpio:instance"],
+    etcs = ["config.json"],
+    visibility = ["//visibility:public"],
+)
