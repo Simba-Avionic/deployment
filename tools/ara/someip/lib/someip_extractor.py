@@ -471,9 +471,11 @@ class SomeipExtractor:
                 
             file+="""class """+namespace_list[-1]+"""Handler final: public ara::com::someip::ServiceHandler {\n"""
             file+=""" public:\n"""
-            file+="""  """+namespace_list[-1]+"""Handler(const ara::core::InstanceSpecifier& instance): ara::com::someip::ServiceHandler(instance,"""+hex(service.id)+""")  {\n"""
+            file+="""  explicit """+namespace_list[-1]+"""Handler(const ara::core::InstanceSpecifier& instance): ara::com::someip::ServiceHandler(instance,"""+hex(service.id)+""")  {\n"""
             for e in service.events:
-                file+="    "+e.name+"._SetSubscriptionCallback(std::bind(&"+namespace_list[-1]+"Handler::SubscribeEvent, this, std::placeholders::_1));"
+                file+="    "+e.name+"._SetSubscriptionCallback(std::bind(&"+namespace_list[-1]+"Handler::SubscribeEvent, this, std::placeholders::_1));\n"
+            for m in service.methods:
+                file+="    "+m.name+"._SetCallCallback(std::bind(&"+namespace_list[-1]+"Handler::HandleMethod, this, std::placeholders::_1, std::placeholders::_2));\n"
             file+="  }\n"
             file+="\n"
             file+="""  virtual ~"""+namespace_list[-1]+"""Handler() = default;\n"""

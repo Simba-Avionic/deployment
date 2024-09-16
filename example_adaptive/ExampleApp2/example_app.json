@@ -15,7 +15,7 @@
                     "app_id": "EXA2",
                     "app_des": "Example Adaptive application 2",
                     "log_level": "kInfo",
-                    "log_mode": "kRemote",
+                    "log_mode": "kRemote|kConsole",
                     "ctx": [
                         {
                             "ctx_id": "ara",
