@@ -1,21 +1,17 @@
 {
     "include": [
-        "deployment/example_adaptive/ExampleApp/example_service.json",
-        "deployment/system_definition/diag/jobs/read_vin.json",
-        "deployment/system_definition/diag/dtc/example_dtc_hex.json",
-        "deployment/system_definition/diag/dtc/example_dtc.json"
     ],
-    "package": "simba.example",
+    "package": "simba.platform.com",
     "adaptive_application": {
-        "ExampleApp2": {
+        "someip_demon": {
             "app": {
-                "bootMode": 0,
-                "parms": "-t -10- 100",
+                "bootMode": 10,
+                "parms": "",
                 "logger": {
-                    "app_id": "EXA2",
-                    "app_des": "Example Adaptive application 2",
+                    "app_id": "SOME",
+                    "app_des": "SomeIP Demon",
                     "log_level": "kInfo",
-                    "log_mode": "kRemote|kConsole",
+                    "log_mode": "kConsole|kRemote",
                     "ctx": [
                         {
                             "ctx_id": "ara",
@@ -28,26 +24,29 @@
                             "ctx_des": "Default ctx for ara::com"
                         },
                         {
-                            "ctx_id": "adiag",
+                            "ctx_id": "diag",
                             "log_level": "kInfo",
                             "ctx_des": "Default ctx for ara::diag"
                         },
                         {
                             "ctx_id": "exec",
-                            "log_level": "kInfo",
+                            "log_level": "kDebug",
                             "ctx_des": "Default ctx for ara::exec"
+                        },
+                        {
+                            "ctx_id": "doip",
+                            "log_level": "kDebug",
+                            "ctx_des": "Default ctx for doip"
+                        },
+                        {
+                            "ctx_id": "netc",
+                            "log_level": "kDebug",
+                            "ctx_des": "Default ctx for network controller"
                         }
                     ]
                 }
             },
             "provide": [
-            ],
-            "require": [
-                {
-                    "name": "ExampleService as service2",
-                    "on": "ipc",
-                    "instance": 2
-                }
             ]
         }
     }

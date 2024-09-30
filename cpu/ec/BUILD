@@ -6,6 +6,7 @@ cpu_def(
     etcs = [
         "diag_config.json",
         "logger_config.json",
+        "platform_config.json",
     ],
     srp_components = [
         # "//deployment/mw/loger/dlt_fc:dlt_server",
@@ -24,6 +25,7 @@ cpu_def(
         "//deployment/platform/em",
         "//deployment/platform/logger",
         "//deployment/platform/diag_demon",
+        "//deployment/platform/someip_demon",
     ],
 )
 
