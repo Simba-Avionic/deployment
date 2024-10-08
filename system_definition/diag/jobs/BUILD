@@ -22,6 +22,23 @@ filegroup(
     ],
     visibility = ["//visibility:public"],
 )
+filegroup(
+    name = "gpio_mw_job",
+    srcs = [
+        "gpio_pin_did.json",
+        "//deployment/system_definition/diag/global:diag_dids",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "temp_job",
+    srcs = [
+        "temp_did.json",
+        "//deployment/system_definition/diag/global:diag_dids",
+    ],
+    visibility = ["//visibility:public"],
+)
 
 filegroup(
     name = "start_rid",
