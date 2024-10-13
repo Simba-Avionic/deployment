@@ -12,5 +12,6 @@ adaptive_application(
     name = "someip_demon",
     bin = "//platform/common/someip_demon/code/application:someip_demon",
     model_src = ["//deployment/platform/someip_demon:instance"],
+    etcs = ["endpoint_config.json"],
     visibility = ["//visibility:public"],
 )
