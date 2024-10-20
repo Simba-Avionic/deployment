@@ -137,7 +137,7 @@ def ara_runtime_lib(name, model_src, visibility = []):
 
     native.cc_library(
         name = name,
-        deps = ["//ara/core:ara_initialization_lib", "//ara/log"],
+        deps = ["//ara/core:ara_initialization_lib", "//ara/log", "//ara/com"],
         srcs = [":runtime_src"],
         includes = ["."],
         visibility = visibility,

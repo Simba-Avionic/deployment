@@ -24,7 +24,7 @@ file_content_core = """/**
  */
 
 #include "ara/core/initialization.h"
-
+#include "ara/com/initialization.h"
 #include <stop_token>
 
 #include "ara/core/model/com_model_item.h"
@@ -54,8 +54,9 @@ Result<void> Initialize() noexcept {
     ara_logger_.LogInfo() << "Added models associated with ara:com";
   }
   
-  
   ara_logger_.LogInfo() << "ARA environment has been initialized";
+  ara::com::Initialize();
+  ara_logger_.LogInfo() << "ARA::COM environment has been initialized";
   return {};
 }
 

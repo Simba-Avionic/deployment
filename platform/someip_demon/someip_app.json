@@ -20,7 +20,7 @@
                         },
                         {
                             "ctx_id": "acom",
-                            "log_level": "kInfo",
+                            "log_level": "kDebug",
                             "ctx_des": "Default ctx for ara::com"
                         },
                         {
@@ -40,7 +40,7 @@
                         },
                         {
                             "ctx_id": "netc",
-                            "log_level": "kDebug",
+                            "log_level": "kError",
                             "ctx_des": "Default ctx for network controller"
                         }
                     ]
